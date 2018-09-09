@@ -12,6 +12,7 @@
             * [resources](src/main/resources)
                 * [db](src/main/resources/db)
                     * [h2](src/main/resources/db/h2)
+                        * [applicationContext.xml](src/main/resources/db/h2/applicationContext.xml)
                         * [initDB.sql](src/main/resources/db/h2/initDB.sql)
                     * [mysql](src/main/resources/db/mysql)
                         * [initDB.sql](src/main/resources/db/mysql/initDB.sql)
