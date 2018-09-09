@@ -15,6 +15,7 @@
                         * [applicationContext.xml](src/main/resources/db/h2/applicationContext.xml)
                         * [initDB.sql](src/main/resources/db/h2/initDB.sql)
                     * [mysql](src/main/resources/db/mysql)
+                        * [applicationContext.xml](src/main/resources/db/mysql/applicationContext.xml)
                         * [initDB.sql](src/main/resources/db/mysql/initDB.sql)
                     * [populateDB.sql](src/main/resources/db/populateDB.sql)
                 * [META-INF](src/main/resources/META-INF)
