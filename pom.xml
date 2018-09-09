@@ -75,6 +75,9 @@
         <!-- JAXB - runtime -->
         <jaxb-runtime.version>2.4.0-b180830.0438</jaxb-runtime.version>
 
+        <!-- Hibernate -->
+        <hibernate.version>5.3.6.Final</hibernate.version>
+
         <!-- MySQL JDBC -->
         <mysql.jdbc.version>8.0.12</mysql.jdbc.version>
 
@@ -294,6 +297,14 @@
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
             <version>${jaxb-runtime.version}</version>
+        </dependency>
+
+        <!-- ORM -->
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
         </dependency>
     </dependencies>
 
