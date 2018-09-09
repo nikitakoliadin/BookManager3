@@ -49,10 +49,10 @@
         <versionsPlugin.generateBackupPoms>false</versionsPlugin.generateBackupPoms>
 
         <!-- JetBrains -->
-        <jetbrains.version>16.0.2</jetbrains.version>
+        <jetbrains-annotations.version>16.0.2</jetbrains-annotations.version>
 
         <!-- Lombok -->
-        <projectlombok.version>1.18.2</projectlombok.version>
+        <lombok.version>1.18.2</lombok.version>
 
         <!-- JUnit -->
         <junit.version>4.12</junit.version>
@@ -75,11 +75,18 @@
         <!-- JAXB - runtime -->
         <jaxb-runtime.version>2.4.0-b180830.0438</jaxb-runtime.version>
 
+        <!-- Hibernate -->
+        <hibernate.version>5.3.6.Final</hibernate.version>
+
+        <!-- Spring -->
+        <spring.version>5.0.9.RELEASE</spring.version>
+        <spring-data-jpa.version>2.0.9.RELEASE</spring-data-jpa.version>
+
         <!-- MySQL JDBC -->
-        <mysql.jdbc.version>8.0.12</mysql.jdbc.version>
+        <mysql-jdbc.version>8.0.12</mysql-jdbc.version>
 
         <!-- H2 JDBC -->
-        <h2.jdbc.version>1.4.197</h2.jdbc.version>
+        <h2-jdbc.version>1.4.197</h2-jdbc.version>
     </properties>
 
     <build>
@@ -211,7 +218,7 @@
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
-            <version>${jetbrains.version}</version>
+            <version>${jetbrains-annotations.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -219,7 +226,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>${projectlombok.version}</version>
+            <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -295,7 +302,36 @@
             <artifactId>jaxb-runtime</artifactId>
             <version>${jaxb-runtime.version}</version>
         </dependency>
+
+        <!-- ORM -->
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
+        <!-- Spring -->
+        <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${spring-data-jpa.version}</version>
+        </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-framework-bom -->
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>${spring.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <profiles>
         <!-- Main profile -->
@@ -314,7 +350,7 @@
                 <dependency>
                     <groupId>mysql</groupId>
                     <artifactId>mysql-connector-java</artifactId>
-                    <version>${mysql.jdbc.version}</version>
+                    <version>${mysql-jdbc.version}</version>
                 </dependency>
             </dependencies>
         </profile>
@@ -335,7 +371,7 @@
                 <dependency>
                     <groupId>com.h2database</groupId>
                     <artifactId>h2</artifactId>
-                    <version>${h2.jdbc.version}</version>
+                    <version>${h2-jdbc.version}</version>
                 </dependency>
             </dependencies>
         </profile>

@@ -61,12 +61,17 @@ If you want to use this project:
     * [Logback](https://logback.qos.ch/)
 * **Parser:**
     * [JAXB](https://docs.oracle.com/javase/tutorial/jaxb/)
+* **ORM:**
+    * [Hibernate](http://hibernate.org/)
+* **Spring:**
+    * [Spring Framework BOM](https://www.baeldung.com/spring-maven-bom)
+    * [Spring Data JPA](http://projects.spring.io/spring-data-jpa/)
 * **Database:**
     * [MySQL](https://dev.mysql.com/)
     * [H2](http://www.h2database.com/html/main.html)
 
 ## Resources Information
-* **External Libraries:**
+* **Dependencies:**
 	* [JetBrains Annotations](https://mvnrepository.com/artifact/org.jetbrains/annotations)
 	* [Lombok](https://mvnrepository.com/artifact/org.projectlombok/lombok)
 	* [JUnit4](https://mvnrepository.com/artifact/junit/junit)
@@ -78,6 +83,9 @@ If you want to use this project:
     * [Logback](https://mvnrepository.com/artifact/ch.qos.logback/logback-classic)
     * [JAXB-API](https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api)
     * [JAXB-runtime](https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-runtime)
+    * [Hibernate](https://mvnrepository.com/artifact/org.hibernate/hibernate-core)
+    * [Spring Framework BOM](https://mvnrepository.com/artifact/org.springframework/spring-framework-bom)
+    * [Spring Data JPA](https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa)
     * [MySQL JDBC](https://mvnrepository.com/artifact/mysql/mysql-connector-java)
     * [H2 JDBC](https://mvnrepository.com/artifact/com.h2database/h2)
 * **Plugins:**
