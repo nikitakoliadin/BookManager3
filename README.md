@@ -63,6 +63,8 @@ If you want to use this project:
     * [JAXB](https://docs.oracle.com/javase/tutorial/jaxb/)
 * **ORM:**
     * [Hibernate](http://hibernate.org/)
+* **Datasource Proxy:**
+    * [P6Spy](https://p6spy.readthedocs.io/en/latest/index.html)
 * **Spring:**
     * [Spring Framework BOM](https://www.baeldung.com/spring-maven-bom)
     * [Spring Data JPA](http://projects.spring.io/spring-data-jpa/)
@@ -84,6 +86,7 @@ If you want to use this project:
     * [JAXB-API](https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api)
     * [JAXB-runtime](https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-runtime)
     * [Hibernate](https://mvnrepository.com/artifact/org.hibernate/hibernate-core)
+    * [P6Spy](https://mvnrepository.com/artifact/p6spy/p6spy)
     * [Spring Framework BOM](https://mvnrepository.com/artifact/org.springframework/spring-framework-bom)
     * [Spring Data JPA](https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa)
     * [MySQL JDBC](https://mvnrepository.com/artifact/mysql/mysql-connector-java)

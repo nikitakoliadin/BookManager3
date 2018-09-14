@@ -23,8 +23,8 @@
 
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="org.h2.Driver"/>
-        <property name="url" value="jdbc:h2:~/db/bookmanager3"/>
+        <property name="driverClassName" value="com.p6spy.engine.spy.P6SpyDriver"/>
+        <property name="url" value="jdbc:p6spy:h2:~/db/bookmanager3"/>
         <property name="username" value="root"/>
         <property name="password" value=""/>
     </bean>
@@ -32,7 +32,7 @@
     <bean id="entityManagerFactory"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="persistenceUnitName" value="jpaData"/>
+        <property name="persistenceUnitName" value="h2JpaData"/>
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
         </property>
@@ -41,7 +41,7 @@
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
-                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.show_sql">false</prop>
                 <prop key="hibernate.format_sql">true</prop>
                 <prop key="hibernate.use_sql_comments">true</prop>
                 <prop key="hibernate.generate_statistics">true</prop>
