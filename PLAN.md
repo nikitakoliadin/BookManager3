@@ -8,6 +8,8 @@
                 * [com](src/main/java/com)
                     * [qthegamep](src/main/java/com/qthegamep)
                         * [bookmanager3](src/main/java/com/qthegamep/bookmanager3)
+                            * [entity](src/main/java/com/qthegamep/bookmanager3/entity)
+                                * [Book.java](src/main/java/com/qthegamep/bookmanager3/entity/Book.java)
                             * [Application.java](src/main/java/com/qthegamep/bookmanager3/Application.java)
             * [resources](src/main/resources)
                 * [db](src/main/resources/db)
