@@ -101,6 +101,14 @@ public class BookTest {
     }
 
     @Test
+    public void shouldBeEqualsWithNullId() {
+        firstBook.setId(null);
+        secondBook.setId(null);
+
+        assertThat(firstBook).isEqualTo(secondBook);
+    }
+
+    @Test
     public void shouldBeEqualsWithNullName() {
         firstBook.setName(null);
         secondBook.setName(null);
@@ -126,6 +134,13 @@ public class BookTest {
     @Test
     public void shouldBeNotEqualsIfIdIsNotEquals() {
         secondBook.setId(2L);
+
+        assertThat(firstBook).isNotEqualTo(secondBook);
+    }
+
+    @Test
+    public void shouldBeNotEqualsIfIdOfFirstObjectIsNull() {
+        firstBook.setId(null);
 
         assertThat(firstBook).isNotEqualTo(secondBook);
     }
@@ -232,6 +247,13 @@ public class BookTest {
     @Test
     public void shouldBeNotEqualsHashCodeIfIdIsNotEquals() {
         secondBook.setId(2L);
+
+        assertThat(firstBook.hashCode()).isNotEqualTo(secondBook.hashCode());
+    }
+
+    @Test
+    public void shouldBeNotEqualsHashCodeIfIdOfFirstObjectIsNull() {
+        firstBook.setId(null);
 
         assertThat(firstBook.hashCode()).isNotEqualTo(secondBook.hashCode());
     }
