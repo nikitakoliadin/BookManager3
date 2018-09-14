@@ -233,7 +233,8 @@ public class BookTest {
         val actual = firstBook.hashCode();
 
         var expected = 1;
-        expected = expected * 59 + firstBook.getId().intValue();
+        val id = firstBook.getId();
+        expected = expected * 59 + (id == null ? 43 : id.hashCode());
         val name = firstBook.getName();
         expected = expected * 59 + (name == null ? 43 : name.hashCode());
         val author = firstBook.getAuthor();
