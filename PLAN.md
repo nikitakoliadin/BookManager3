@@ -16,6 +16,7 @@
                     * [h2](src/main/resources/db/h2)
                         * [applicationContext.xml](src/main/resources/db/h2/applicationContext.xml)
                         * [initDB.sql](src/main/resources/db/h2/initDB.sql)
+                        * [spy.properties](src/main/resources/db/h2/spy.properties)
                     * [mysql](src/main/resources/db/mysql)
                         * [applicationContext.xml](src/main/resources/db/mysql/applicationContext.xml)
                         * [initDB.sql](src/main/resources/db/mysql/initDB.sql)
