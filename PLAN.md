@@ -20,6 +20,7 @@
                     * [mysql](src/main/resources/db/mysql)
                         * [applicationContext.xml](src/main/resources/db/mysql/applicationContext.xml)
                         * [initDB.sql](src/main/resources/db/mysql/initDB.sql)
+                        * [spy.properties](src/main/resources/db/mysql/spy.properties)
                     * [populateDB.sql](src/main/resources/db/populateDB.sql)
                 * [META-INF](src/main/resources/META-INF)
                     * [persistence.xml](src/main/resources/META-INF/persistence.xml)
