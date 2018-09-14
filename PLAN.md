@@ -10,6 +10,8 @@
                         * [bookmanager3](src/main/java/com/qthegamep/bookmanager3)
                             * [entity](src/main/java/com/qthegamep/bookmanager3/entity)
                                 * [Book.java](src/main/java/com/qthegamep/bookmanager3/entity/Book.java)
+                            * [formatter](src/main/java/com/qthegamep/bookmanager3/formatter)
+                                * [SQLSimpleFormatter.java](src/main/java/com/qthegamep/bookmanager3/formatter/SQLSimpleFormatter.java)
                             * [Application.java](src/main/java/com/qthegamep/bookmanager3/Application.java)
             * [resources](src/main/resources)
                 * [db](src/main/resources/db)
