@@ -68,6 +68,7 @@ If you want to use this project:
 * **Spring:**
     * [Spring Framework BOM](https://www.baeldung.com/spring-maven-bom)
     * [Spring Data JPA](http://projects.spring.io/spring-data-jpa/)
+    * [Spring Test](https://docs.spring.io/spring/docs/current/spring-framework-reference/testing.html)
 * **Database:**
     * [MySQL](https://dev.mysql.com/)
     * [H2](http://www.h2database.com/html/main.html)
@@ -89,6 +90,7 @@ If you want to use this project:
     * [P6Spy](https://mvnrepository.com/artifact/p6spy/p6spy)
     * [Spring Framework BOM](https://mvnrepository.com/artifact/org.springframework/spring-framework-bom)
     * [Spring Data JPA](https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa)
+    * [Spring Test](https://mvnrepository.com/artifact/org.springframework/spring-test)
     * [MySQL JDBC](https://mvnrepository.com/artifact/mysql/mysql-connector-java)
     * [H2 JDBC](https://mvnrepository.com/artifact/com.h2database/h2)
 * **Plugins:**
