@@ -8,6 +8,10 @@
     <property name="APPLICATION_LOG_NAME" value="application.log"/>
     <property name="APPLICATION_LOG_PATTERN_NAME" value="application.%d{yyyy-MM-dd}.%i.log"/>
 
+    <!-- Hibernate logger properties -->
+    <property name="HIBERNATE_LOG_NAME" value="hibernate.log"/>
+    <property name="HIBERNATE_LOG_PATTERN_NAME" value="hibernate.%d{yyyy-MM-dd}.%i.log"/>
+
     <!-- Root file log -->
     <appender name="ROOT_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_PATH}/${APPLICATION_LOG_NAME}</file>
@@ -21,8 +25,80 @@
         </rollingPolicy>
     </appender>
 
+    <!-- Hibernate file log -->
+    <appender name="HIBERNATE_FILE_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/${HIBERNATE_LOG_NAME}</file>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%date %level [%thread] %logger{100}.%method.%line - %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/archived/hibernate/${HIBERNATE_LOG_PATTERN_NAME}</fileNamePattern>
+            <maxFileSize>100MB</maxFileSize>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>TRACE</level>
+        </filter>
+    </appender>
+
+    <!-- P6Spy console log -->
+    <appender name="P6SPY_LOG_TO_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%blue(%msg%n)</pattern>
+        </encoder>
+    </appender>
+
     <!-- Root logger -->
     <root level="INFO">
         <appender-ref ref="ROOT_FILE"/>
     </root>
+
+    <!-- Hibernate loggers -->
+    <logger name="org.hibernate" level="INFO" additivity="false">
+        <appender-ref ref="HIBERNATE_FILE_LOG"/>
+    </logger>
+
+    <logger name="org.hibernate.jdbc" level="DEBUG" additivity="false">
+        <appender-ref ref="HIBERNATE_FILE_LOG"/>
+    </logger>
+
+    <logger name="org.hibernate.type" level="TRACE" additivity="false">
+        <appender-ref ref="HIBERNATE_FILE_LOG"/>
+    </logger>
+
+    <logger name="org.hibernate.tool.hbm2ddl" level="WARN" additivity="false">
+        <appender-ref ref="HIBERNATE_FILE_LOG"/>
+    </logger>
+
+    <logger name="org.hibernate.type.descriptor.sql" level="DEBUG" additivity="false">
+        <appender-ref ref="HIBERNATE_FILE_LOG"/>
+    </logger>
+
+    <logger name="org.hibernate.SQL" level="DEBUG" additivity="false">
+        <appender-ref ref="HIBERNATE_FILE_LOG"/>
+    </logger>
+
+    <logger name="org.hibernate.hql" level="DEBUG" additivity="false">
+        <appender-ref ref="HIBERNATE_FILE_LOG"/>
+    </logger>
+
+    <logger name="org.hibernate.stat" level="DEBUG" additivity="false">
+        <appender-ref ref="HIBERNATE_FILE_LOG"/>
+    </logger>
+
+    <logger name="org.hibernate.hql.ast.AST" level="INFO" additivity="false">
+        <appender-ref ref="HIBERNATE_FILE_LOG"/>
+    </logger>
+
+    <logger name="org.hibernate.cache" level="INFO" additivity="false">
+        <appender-ref ref="HIBERNATE_FILE_LOG"/>
+    </logger>
+
+    <!-- P6Spy logger -->
+    <logger name="p6spy" level="INFO" additivity="false">
+        <appender-ref ref="ROOT_FILE"/>
+        <appender-ref ref="HIBERNATE_FILE_LOG"/>
+        <appender-ref ref="P6SPY_LOG_TO_CONSOLE"/>
+    </logger>
 </configuration>
