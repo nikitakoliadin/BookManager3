@@ -43,6 +43,7 @@
                                     * [Rules.java](src/test/java/com/qthegamep/bookmanager3/testhelper/rule/Rules.java)
                                 * [util](src/test/java/com/qthegamep/bookmanager3/testhelper/util)
                                     * [IOUtil.java](src/test/java/com/qthegamep/bookmanager3/testhelper/util/IOUtil.java)
+                                    * [TestDataUtil.java](src/test/java/com/qthegamep/bookmanager3/testhelper/util/TestDataUtil.java)
                             * [ApplicationTest.java](src/test/java/com/qthegamep/bookmanager3/ApplicationTest.java)
             * [resources](src/test/resources)
                 * [logback-test.xml](src/test/resources/logback-test.xml)
