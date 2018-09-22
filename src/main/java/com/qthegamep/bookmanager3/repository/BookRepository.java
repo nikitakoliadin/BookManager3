@@ -2,8 +2,9 @@ package com.qthegamep.bookmanager3.repository;
 
 import com.qthegamep.bookmanager3.entity.Book;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
@@ -39,10 +40,10 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     List<Book> findBooksByPrintYear(int printYear);
 
     /**
-     * This repository method should return list of books entities objects from the database by is read.
+     * This repository method should return list of books entities objects from the database by read.
      *
-     * @param isRead is the parameter by which the list of entities objects will be returned.
+     * @param read is the parameter by which the list of entities objects will be returned.
      * @return list of books entities objects.
      */
-    List<Book> findBooksByIsRead(boolean isRead);
+    List<Book> findBooksByRead(boolean read);
 }
