@@ -57,6 +57,4 @@
     * [pom.xml](pom.xml)
     * [README.md](README.md)
 
-## Fix In Future
-
 ## Bugs && Messages
