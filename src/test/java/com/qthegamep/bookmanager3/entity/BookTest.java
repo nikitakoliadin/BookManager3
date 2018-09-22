@@ -1,6 +1,7 @@
 package com.qthegamep.bookmanager3.entity;
 
 import com.qthegamep.bookmanager3.testhelper.rule.Rules;
+import com.qthegamep.bookmanager3.testhelper.util.TestDataUtil;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -24,25 +25,12 @@ public class BookTest {
     public Stopwatch stopwatchRule = Rules.STOPWATCH_RULE;
 
     private Book firstBook;
-    private Book secondBook;
+    private Book firstBookCopy;
 
     @Before
     public void setUp() {
-        firstBook = new Book();
-
-        firstBook.setId(1L);
-        firstBook.setName("test firstBook");
-        firstBook.setAuthor("test author");
-        firstBook.setPrintYear(2000);
-        firstBook.setRead(false);
-
-        secondBook = new Book();
-
-        secondBook.setId(1L);
-        secondBook.setName("test firstBook");
-        secondBook.setAuthor("test author");
-        secondBook.setPrintYear(2000);
-        secondBook.setRead(false);
+        firstBook = TestDataUtil.createFirstBook();
+        firstBookCopy = TestDataUtil.createFirstBook();
     }
 
     @Test
@@ -97,101 +85,101 @@ public class BookTest {
 
     @Test
     public void shouldBeEquals() {
-        assertThat(firstBook).isEqualTo(secondBook);
+        assertThat(firstBook).isEqualTo(firstBookCopy);
     }
 
     @Test
     public void shouldBeEqualsWithNullId() {
         firstBook.setId(null);
-        secondBook.setId(null);
+        firstBookCopy.setId(null);
 
-        assertThat(firstBook).isEqualTo(secondBook);
+        assertThat(firstBook).isEqualTo(firstBookCopy);
     }
 
     @Test
     public void shouldBeEqualsWithNullName() {
         firstBook.setName(null);
-        secondBook.setName(null);
+        firstBookCopy.setName(null);
 
-        assertThat(firstBook).isEqualTo(secondBook);
+        assertThat(firstBook).isEqualTo(firstBookCopy);
     }
 
     @Test
     public void shouldBeEqualsWithNullAuthor() {
         firstBook.setAuthor(null);
-        secondBook.setAuthor(null);
+        firstBookCopy.setAuthor(null);
 
-        assertThat(firstBook).isEqualTo(secondBook);
+        assertThat(firstBook).isEqualTo(firstBookCopy);
     }
 
     @Test
     public void shouldBeEqualsOfCopyObject() {
-        secondBook = firstBook;
+        firstBookCopy = firstBook;
 
-        assertThat(firstBook).isEqualTo(secondBook);
+        assertThat(firstBook).isEqualTo(firstBookCopy);
     }
 
     @Test
     public void shouldBeNotEqualsIfIdIsNotEquals() {
-        secondBook.setId(2L);
+        firstBookCopy.setId(2L);
 
-        assertThat(firstBook).isNotEqualTo(secondBook);
+        assertThat(firstBook).isNotEqualTo(firstBookCopy);
     }
 
     @Test
     public void shouldBeNotEqualsIfIdOfFirstObjectIsNull() {
         firstBook.setId(null);
 
-        assertThat(firstBook).isNotEqualTo(secondBook);
+        assertThat(firstBook).isNotEqualTo(firstBookCopy);
     }
 
     @Test
     public void shouldBeNotEqualsIfNameOfFirstObjectIsNull() {
         firstBook.setName(null);
 
-        assertThat(firstBook).isNotEqualTo(secondBook);
+        assertThat(firstBook).isNotEqualTo(firstBookCopy);
     }
 
     @Test
     public void shouldBeNotEqualsIfNameIsNotEquals() {
-        secondBook.setName("secondBook");
+        firstBookCopy.setName("firstBookCopy");
 
-        assertThat(firstBook).isNotEqualTo(secondBook);
+        assertThat(firstBook).isNotEqualTo(firstBookCopy);
     }
 
     @Test
     public void shouldBeNotEqualsIfAuthorOfFirstObjectIsNull() {
         firstBook.setAuthor(null);
 
-        assertThat(firstBook).isNotEqualTo(secondBook);
+        assertThat(firstBook).isNotEqualTo(firstBookCopy);
     }
 
     @Test
     public void shouldBeNotEqualsIfAuthorIsNotEquals() {
-        secondBook.setAuthor("newAuthor");
+        firstBookCopy.setAuthor("newAuthor");
 
-        assertThat(firstBook).isNotEqualTo(secondBook);
+        assertThat(firstBook).isNotEqualTo(firstBookCopy);
     }
 
     @Test
     public void shouldBeNotEqualsIfPrintYearIsNotEquals() {
-        secondBook.setPrintYear(2011);
+        firstBookCopy.setPrintYear(2011);
 
-        assertThat(firstBook).isNotEqualTo(secondBook);
+        assertThat(firstBook).isNotEqualTo(firstBookCopy);
     }
 
     @Test
     public void shouldBeNotEqualsIfIsReadIsNotEquals() {
-        secondBook.setRead(true);
+        firstBookCopy.setRead(true);
 
-        assertThat(firstBook).isNotEqualTo(secondBook);
+        assertThat(firstBook).isNotEqualTo(firstBookCopy);
     }
 
     @Test
     public void shouldBeNotEqualsToNullObject() {
-        secondBook = null;
+        firstBookCopy = null;
 
-        assertThat(firstBook).isNotEqualTo(secondBook);
+        assertThat(firstBook).isNotEqualTo(firstBookCopy);
     }
 
     @Test
@@ -218,14 +206,14 @@ public class BookTest {
 
     @Test
     public void shouldBeEqualsHashCode() {
-        assertThat(firstBook.hashCode()).isEqualTo(secondBook.hashCode());
+        assertThat(firstBook.hashCode()).isEqualTo(firstBookCopy.hashCode());
     }
 
     @Test
     public void shouldBeEqualsHashCodeOfCopyObject() {
-        secondBook = firstBook;
+        firstBookCopy = firstBook;
 
-        assertThat(firstBook.hashCode()).isEqualTo(secondBook.hashCode());
+        assertThat(firstBook.hashCode()).isEqualTo(firstBookCopy.hashCode());
     }
 
     @Test
@@ -247,56 +235,56 @@ public class BookTest {
 
     @Test
     public void shouldBeNotEqualsHashCodeIfIdIsNotEquals() {
-        secondBook.setId(2L);
+        firstBookCopy.setId(2L);
 
-        assertThat(firstBook.hashCode()).isNotEqualTo(secondBook.hashCode());
+        assertThat(firstBook.hashCode()).isNotEqualTo(firstBookCopy.hashCode());
     }
 
     @Test
     public void shouldBeNotEqualsHashCodeIfIdOfFirstObjectIsNull() {
         firstBook.setId(null);
 
-        assertThat(firstBook.hashCode()).isNotEqualTo(secondBook.hashCode());
+        assertThat(firstBook.hashCode()).isNotEqualTo(firstBookCopy.hashCode());
     }
 
     @Test
     public void shouldBeNotEqualsHashCodeIfNameOfFirstObjectIsNull() {
         firstBook.setName(null);
 
-        assertThat(firstBook.hashCode()).isNotEqualTo(secondBook.hashCode());
+        assertThat(firstBook.hashCode()).isNotEqualTo(firstBookCopy.hashCode());
     }
 
     @Test
     public void shouldBeNotEqualsHashCodeIfAuthorOfFirstObjectIsNull() {
         firstBook.setAuthor(null);
 
-        assertThat(firstBook.hashCode()).isNotEqualTo(secondBook.hashCode());
+        assertThat(firstBook.hashCode()).isNotEqualTo(firstBookCopy.hashCode());
     }
 
     @Test
     public void shouldBeNotEqualsHashCodeIfPrintYearIsNotEquals() {
-        secondBook.setPrintYear(2011);
+        firstBookCopy.setPrintYear(2011);
 
-        assertThat(firstBook.hashCode()).isNotEqualTo(secondBook.hashCode());
+        assertThat(firstBook.hashCode()).isNotEqualTo(firstBookCopy.hashCode());
     }
 
     @Test
     public void shouldBeNotEqualsHashCodeIfIsReadIsNotEquals() {
-        secondBook.setRead(true);
+        firstBookCopy.setRead(true);
 
-        assertThat(firstBook.hashCode()).isNotEqualTo(secondBook.hashCode());
+        assertThat(firstBook.hashCode()).isNotEqualTo(firstBookCopy.hashCode());
     }
 
     @Test
     public void shouldBeNotEqualsHashCodeToNullObject() {
-        secondBook = null;
+        firstBookCopy = null;
 
-        assertThat(firstBook.hashCode()).isNotEqualTo(secondBook);
+        assertThat(firstBook.hashCode()).isNotEqualTo(firstBookCopy);
     }
 
     @Test
     public void shouldWorkToStringCorrectly() {
-        val expected = "Book(id=1, name=test firstBook, author=test author, printYear=2000, isRead=false)";
+        val expected = "Book(id=1, name=test firstBook, author=test firstAuthor, printYear=2000, read=false)";
 
         assertThat(firstBook.toString()).isEqualTo(expected);
     }
