@@ -297,7 +297,7 @@ public class BookRepositoryTest {
     public void shouldGetByIsReadEntitiesFromTheDatabaseCorrectly() {
         bookRepository.saveAll(books);
 
-        val booksFromTheDatabase = bookRepository.findBooksByIsRead(false);
+        val booksFromTheDatabase = bookRepository.findBooksByRead(false);
 
         assertThat(booksFromTheDatabase)
                 .isNotNull()
@@ -308,7 +308,7 @@ public class BookRepositoryTest {
     @Test
     @Transactional
     public void shouldGetByIsReadReturnEmptyEntitiesListCorrectly() {
-        val booksFromTheDatabase = bookRepository.findBooksByIsRead(true);
+        val booksFromTheDatabase = bookRepository.findBooksByRead(true);
 
         assertThat(booksFromTheDatabase)
                 .isNotNull()
