@@ -68,6 +68,11 @@ If you want to use this project:
 * **Spring:**
     * [Spring Framework BOM](https://www.baeldung.com/spring-maven-bom)
     * [Spring Data JPA](http://projects.spring.io/spring-data-jpa/)
+    * [Spring Web MVC](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html)
+    * [Spring Test](https://docs.spring.io/spring/docs/current/spring-framework-reference/testing.html)
+* **Javax:**
+    * [Javax Servlet API](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/)
+    * [Javax Annotation API](https://docs.oracle.com/javase/7/docs/api/javax/annotation/package-summary.html)
 * **Database:**
     * [MySQL](https://dev.mysql.com/)
     * [H2](http://www.h2database.com/html/main.html)
@@ -89,6 +94,10 @@ If you want to use this project:
     * [P6Spy](https://mvnrepository.com/artifact/p6spy/p6spy)
     * [Spring Framework BOM](https://mvnrepository.com/artifact/org.springframework/spring-framework-bom)
     * [Spring Data JPA](https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa)
+    * [Spring Web MVC](https://mvnrepository.com/artifact/org.springframework/spring-webmvc)
+    * [Spring Test](https://mvnrepository.com/artifact/org.springframework/spring-test)
+    * [Javax Servlet API](https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api)
+    * [Javax Annotation API](https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api)
     * [MySQL JDBC](https://mvnrepository.com/artifact/mysql/mysql-connector-java)
     * [H2 JDBC](https://mvnrepository.com/artifact/com.h2database/h2)
 * **Plugins:**
