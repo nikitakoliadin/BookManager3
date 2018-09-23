@@ -49,6 +49,7 @@
                             * [ApplicationTest.java](src/test/java/com/qthegamep/bookmanager3/ApplicationTest.java)
             * [resources](src/test/resources)
                 * [logback-test.xml](src/test/resources/logback-test.xml)
+                * [spy.properties](src/test/resources/spy.properties)
     * [.appveyor.yml](.appveyor.yml)
     * [.gitignore](.gitignore)
     * [.travis.yml](.travis.yml)
