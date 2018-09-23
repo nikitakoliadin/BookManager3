@@ -50,6 +50,7 @@
             * [resources](src/test/resources)
                 * [logback-test.xml](src/test/resources/logback-test.xml)
                 * [spy.properties](src/test/resources/spy.properties)
+                * [testApplicationContext.xml](src/test/resources/testApplicationContext.xml)
     * [.appveyor.yml](.appveyor.yml)
     * [.gitignore](.gitignore)
     * [.travis.yml](.travis.yml)
