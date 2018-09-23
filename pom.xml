@@ -85,17 +85,17 @@
         <spring.version>5.1.0.RELEASE</spring.version>
         <spring-data-jpa.version>2.1.0.RELEASE</spring-data-jpa.version>
 
-        <!-- MySQL JDBC -->
-        <mysql-jdbc.version>8.0.12</mysql-jdbc.version>
-
-        <!-- H2 JDBC -->
-        <h2-jdbc.version>1.4.197</h2-jdbc.version>
-
         <!-- Javax Servlet API -->
         <javax-servlet-api.version>4.0.1</javax-servlet-api.version>
 
         <!-- Javax Annotation API -->
         <javax-annotation-api.version>1.3.2</javax-annotation-api.version>
+
+        <!-- MySQL JDBC -->
+        <mysql-jdbc.version>8.0.12</mysql-jdbc.version>
+
+        <!-- H2 JDBC -->
+        <h2-jdbc.version>1.4.197</h2-jdbc.version>
     </properties>
 
     <build>
@@ -364,6 +364,15 @@
             <artifactId>javax.annotation-api</artifactId>
             <version>${javax-annotation-api.version}</version>
         </dependency>
+
+        <!-- DB -->
+        <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2-jdbc.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -380,27 +389,6 @@
     </dependencyManagement>
 
     <profiles>
-        <!-- Main profile -->
-        <profile>
-            <id>mysql-database</id>
-            <build>
-                <!-- MySQL resources directory -->
-                <resources>
-                    <resource>
-                        <directory>src/main/resources/db/mysql</directory>
-                    </resource>
-                </resources>
-            </build>
-            <dependencies>
-                <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-                <dependency>
-                    <groupId>mysql</groupId>
-                    <artifactId>mysql-connector-java</artifactId>
-                    <version>${mysql-jdbc.version}</version>
-                </dependency>
-            </dependencies>
-        </profile>
-
         <!-- Test profile -->
         <profile>
             <id>h2-database</id>
@@ -418,6 +406,27 @@
                     <groupId>com.h2database</groupId>
                     <artifactId>h2</artifactId>
                     <version>${h2-jdbc.version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
+
+        <!-- Main profile -->
+        <profile>
+            <id>mysql-database</id>
+            <build>
+                <!-- MySQL resources directory -->
+                <resources>
+                    <resource>
+                        <directory>src/main/resources/db/mysql</directory>
+                    </resource>
+                </resources>
+            </build>
+            <dependencies>
+                <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+                <dependency>
+                    <groupId>mysql</groupId>
+                    <artifactId>mysql-connector-java</artifactId>
+                    <version>${mysql-jdbc.version}</version>
                 </dependency>
             </dependencies>
         </profile>
