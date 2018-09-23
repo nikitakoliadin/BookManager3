@@ -12,7 +12,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,9 +32,8 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
 @WebAppConfiguration
-@ContextConfiguration("classpath:/applicationContext.xml")
+@ContextConfiguration("classpath:/testApplicationContext.xml")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-@Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:/initDB.sql")
 @RunWith(SpringJUnit4ClassRunner.class)
 public class BookRepositoryTest {
 
