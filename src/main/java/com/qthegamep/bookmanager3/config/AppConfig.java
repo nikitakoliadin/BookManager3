@@ -33,6 +33,7 @@ public class AppConfig {
     private static final String DB_URL = "db.url";
     private static final String DB_USERNAME = "db.username";
     private static final String DB_PASSWORD = "db.password";
+    private static final String EMF_PERSISTENCE_UNIT_NAME = "emf.persistenceUnitName";
     private static final String EMF_PACKAGES_TO_SCAN = "emf.packagesToScan";
     private static final String HIBERNATE_DIALECT = "hibernate.dialect";
     private static final String HIBERNATE_HBM2DDL_AUTO = "hibernate.hbm2ddl.auto";
@@ -66,6 +67,7 @@ public class AppConfig {
         val entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
 
         entityManagerFactory.setDataSource(dataSource());
+        entityManagerFactory.setPersistenceUnitName(env.getRequiredProperty(EMF_PERSISTENCE_UNIT_NAME));
         entityManagerFactory.setPersistenceProviderClass(HibernatePersistenceProvider.class);
         entityManagerFactory.setPackagesToScan(env.getRequiredProperty(EMF_PACKAGES_TO_SCAN));
 
