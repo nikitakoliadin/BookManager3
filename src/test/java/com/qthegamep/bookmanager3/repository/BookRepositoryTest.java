@@ -32,7 +32,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
 @WebAppConfiguration
-@ContextConfiguration("classpath:/testApplicationContext.xml")
+@ContextConfiguration("classpath:testApplicationContext.xml")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 @RunWith(SpringJUnit4ClassRunner.class)
 public class BookRepositoryTest {
