@@ -9,6 +9,7 @@
                     * [qthegamep](src/main/java/com/qthegamep)
                         * [bookmanager3](src/main/java/com/qthegamep/bookmanager3)
                             * [config](src/main/java/com/qthegamep/bookmanager3/config)
+                                * [AppConfig.java](src/main/java/com/qthegamep/bookmanager3/config/AppConfig.java)
                                 * [AppInitializer.java](src/main/java/com/qthegamep/bookmanager3/config/AppInitializer.java)
                             * [entity](src/main/java/com/qthegamep/bookmanager3/entity)
                                 * [Book.java](src/main/java/com/qthegamep/bookmanager3/entity/Book.java)
