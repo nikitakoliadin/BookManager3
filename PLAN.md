@@ -18,6 +18,7 @@
             * [resources](src/main/resources)
                 * [db](src/main/resources/db)
                     * [h2](src/main/resources/db/h2)
+                        * [application.properties](src/main/resources/db/h2/application.properties)
                         * [initDB.sql](src/main/resources/db/h2/initDB.sql)
                         * [spy.properties](src/main/resources/db/h2/spy.properties)
                     * [mysql](src/main/resources/db/mysql)
