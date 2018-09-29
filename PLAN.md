@@ -8,6 +8,8 @@
                 * [com](src/main/java/com)
                     * [qthegamep](src/main/java/com/qthegamep)
                         * [bookmanager3](src/main/java/com/qthegamep/bookmanager3)
+                            * [config](src/main/java/com/qthegamep/bookmanager3/config)
+                                * [AppInitializer.java](src/main/java/com/qthegamep/bookmanager3/config/AppInitializer.java)
                             * [entity](src/main/java/com/qthegamep/bookmanager3/entity)
                                 * [Book.java](src/main/java/com/qthegamep/bookmanager3/entity/Book.java)
                             * [formatter](src/main/java/com/qthegamep/bookmanager3/formatter)
