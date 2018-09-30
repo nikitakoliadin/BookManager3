@@ -66,3 +66,6 @@
     * [README.md](README.md)
 
 ## Bugs && Messages
+* AppConfig class
+    * dataSource() -> setDriverClassName() mutation
+    * transactionManager() -> setEntityManagerFactory() mutation
