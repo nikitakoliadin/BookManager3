@@ -10,12 +10,12 @@ import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import javax.persistence.EntityNotFoundException;
 
 import org.junit.rules.ExternalResource;
@@ -43,7 +43,7 @@ public class BookRepositoryTest {
     @Rule
     public Stopwatch stopwatchRule = Rules.STOPWATCH_RULE;
 
-    @Resource
+    @Autowired
     private BookRepository bookRepository;
 
     private Book firstBook;
