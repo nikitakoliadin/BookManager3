@@ -50,6 +50,11 @@ public class AppConfig {
     @Resource
     private Environment env;
 
+    /**
+     * Create and setting database source bean.
+     *
+     * @return {@link javax.sql.DataSource} bean.
+     */
     @Bean
     public DataSource dataSource() {
         val dataSource = new DriverManagerDataSource();
@@ -62,6 +67,11 @@ public class AppConfig {
         return dataSource;
     }
 
+    /**
+     * Create and setting local container entity manager factory bean.
+     *
+     * @return {@link org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean} bean.
+     */
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         val entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
@@ -76,6 +86,11 @@ public class AppConfig {
         return entityManagerFactory;
     }
 
+    /**
+     * Create and setting jpa transaction manager bean.
+     *
+     * @return {@link org.springframework.orm.jpa.JpaTransactionManager} bean.
+     */
     @Bean
     public JpaTransactionManager transactionManager() {
         val transactionManager = new JpaTransactionManager();
@@ -98,7 +113,9 @@ public class AppConfig {
         jpaProperties.put(HIBERNATE_JDBC_FETCH_SIZE, env.getRequiredProperty(HIBERNATE_JDBC_FETCH_SIZE));
         jpaProperties.put(HIBERNATE_ORDER_INSERTS, env.getRequiredProperty(HIBERNATE_ORDER_INSERTS));
         jpaProperties.put(HIBERNATE_ORDER_UPDATES, env.getRequiredProperty(HIBERNATE_ORDER_UPDATES));
-        jpaProperties.put(HIBERNATE_JDBC_BATCH_VERSIONED_DATA, env.getRequiredProperty(HIBERNATE_JDBC_BATCH_VERSIONED_DATA));
+        jpaProperties.put(HIBERNATE_JDBC_BATCH_VERSIONED_DATA,
+                env.getRequiredProperty(HIBERNATE_JDBC_BATCH_VERSIONED_DATA)
+        );
 
         return jpaProperties;
     }
