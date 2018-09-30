@@ -10,13 +10,12 @@ import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import javax.persistence.EntityNotFoundException;
 
 import org.junit.rules.ExternalResource;
@@ -33,9 +32,8 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
 @WebAppConfiguration
-@ContextConfiguration("classpath:/applicationContext.xml")
+@ContextConfiguration("classpath:testApplicationContext.xml")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-@Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:/initDB.sql")
 @RunWith(SpringJUnit4ClassRunner.class)
 public class BookRepositoryTest {
 
@@ -45,7 +43,7 @@ public class BookRepositoryTest {
     @Rule
     public Stopwatch stopwatchRule = Rules.STOPWATCH_RULE;
 
-    @Resource
+    @Autowired
     private BookRepository bookRepository;
 
     private Book firstBook;
@@ -297,7 +295,7 @@ public class BookRepositoryTest {
     public void shouldGetByIsReadEntitiesFromTheDatabaseCorrectly() {
         bookRepository.saveAll(books);
 
-        val booksFromTheDatabase = bookRepository.findBooksByIsRead(false);
+        val booksFromTheDatabase = bookRepository.findBooksByRead(false);
 
         assertThat(booksFromTheDatabase)
                 .isNotNull()
@@ -308,7 +306,7 @@ public class BookRepositoryTest {
     @Test
     @Transactional
     public void shouldGetByIsReadReturnEmptyEntitiesListCorrectly() {
-        val booksFromTheDatabase = bookRepository.findBooksByIsRead(true);
+        val booksFromTheDatabase = bookRepository.findBooksByRead(true);
 
         assertThat(booksFromTheDatabase)
                 .isNotNull()

@@ -1,7 +1,14 @@
 # BookManager3
 
 ## Project Information
-This project is the manager of books. I used MySQL database as main and H2 database for tests.
+This project is the manager of books. I used such kinds of databases as:
+
+Main database:
+* [MySql](https://dev.mysql.com/)
+
+Test database:
+* [H2](http://www.h2database.com/html/main.html)
+
 In this project implemented standard [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations using [Spring Data](https://spring.io/projects/spring-data) such as:
 * Create
 * Read

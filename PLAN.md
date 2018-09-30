@@ -8,6 +8,9 @@
                 * [com](src/main/java/com)
                     * [qthegamep](src/main/java/com/qthegamep)
                         * [bookmanager3](src/main/java/com/qthegamep/bookmanager3)
+                            * [config](src/main/java/com/qthegamep/bookmanager3/config)
+                                * [AppConfig.java](src/main/java/com/qthegamep/bookmanager3/config/AppConfig.java)
+                                * [AppInitializer.java](src/main/java/com/qthegamep/bookmanager3/config/AppInitializer.java)
                             * [entity](src/main/java/com/qthegamep/bookmanager3/entity)
                                 * [Book.java](src/main/java/com/qthegamep/bookmanager3/entity/Book.java)
                             * [formatter](src/main/java/com/qthegamep/bookmanager3/formatter)
@@ -18,11 +21,11 @@
             * [resources](src/main/resources)
                 * [db](src/main/resources/db)
                     * [h2](src/main/resources/db/h2)
-                        * [applicationContext.xml](src/main/resources/db/h2/applicationContext.xml)
+                        * [application.properties](src/main/resources/db/h2/application.properties)
                         * [initDB.sql](src/main/resources/db/h2/initDB.sql)
                         * [spy.properties](src/main/resources/db/h2/spy.properties)
                     * [mysql](src/main/resources/db/mysql)
-                        * [applicationContext.xml](src/main/resources/db/mysql/applicationContext.xml)
+                        * [application.properties](src/main/resources/db/mysql/application.properties)
                         * [initDB.sql](src/main/resources/db/mysql/initDB.sql)
                         * [spy.properties](src/main/resources/db/mysql/spy.properties)
                     * [populateDB.sql](src/main/resources/db/populateDB.sql)
@@ -34,6 +37,9 @@
                 * [com](src/test/java/com)
                     * [qthegamep](src/test/java/com/qthegamep)
                         * [bookmanager3](src/test/java/com/qthegamep/bookmanager3)
+                            * [config](src/test/java/com/qthegamep/bookmanager3/config)
+                                * [AppConfigTest.java](src/test/java/com/qthegamep/bookmanager3/config/AppConfigTest.java)
+                                * [AppInitializerTest.java](src/test/java/com/qthegamep/bookmanager3/config/AppInitializerTest.java)
                             * [entity](src/test/java/com/qthegamep/bookmanager3/entity)
                                 * [BookTest.java](src/test/java/com/qthegamep/bookmanager3/entity/BookTest.java)
                             * [formatter](src/test/java/com/qthegamep/bookmanager3/formatter)
@@ -49,6 +55,8 @@
                             * [ApplicationTest.java](src/test/java/com/qthegamep/bookmanager3/ApplicationTest.java)
             * [resources](src/test/resources)
                 * [logback-test.xml](src/test/resources/logback-test.xml)
+                * [spy.properties](src/test/resources/spy.properties)
+                * [testApplicationContext.xml](src/test/resources/testApplicationContext.xml)
     * [.appveyor.yml](.appveyor.yml)
     * [.gitignore](.gitignore)
     * [.travis.yml](.travis.yml)
@@ -57,6 +65,7 @@
     * [pom.xml](pom.xml)
     * [README.md](README.md)
 
-## Fix In Future
-
 ## Bugs && Messages
+* AppConfig class
+    * dataSource() -> setDriverClassName() mutation
+    * transactionManager() -> setEntityManagerFactory() mutation

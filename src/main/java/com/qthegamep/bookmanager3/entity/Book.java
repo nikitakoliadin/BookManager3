@@ -33,5 +33,5 @@ public class Book {
     private int printYear;
 
     @Column(name = "IS_READ", nullable = false)
-    private boolean isRead;
+    private boolean read;
 }

@@ -4,7 +4,7 @@
     <!-- Path to logs data -->
     <property name="LOG_PATH" value="${user.dir}/log/application"/>
 
-    <!-- Root logger properties -->
+    <!-- Application logger properties -->
     <property name="APPLICATION_LOG_NAME" value="application.log"/>
     <property name="APPLICATION_LOG_PATTERN_NAME" value="application.%d{yyyy-MM-dd}.%i.log"/>
 
@@ -12,8 +12,20 @@
     <property name="HIBERNATE_LOG_NAME" value="hibernate.log"/>
     <property name="HIBERNATE_LOG_PATTERN_NAME" value="hibernate.%d{yyyy-MM-dd}.%i.log"/>
 
-    <!-- Root file log -->
-    <appender name="ROOT_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!-- P6spy logger properties -->
+    <property name="P6SPY_LOG_NAME" value="p6spy.log"/>
+    <property name="P6SPY_LOG_PATTERN_NAME" value="p6spy.%d{yyyy-MM-dd}.%i.log"/>
+
+    <!-- Spring logger properties -->
+    <property name="SPRING_LOG_NAME" value="spring.log"/>
+    <property name="SPRING_LOG_PATTERN_NAME" value="spring.%d{yyyy-MM-dd}.%i.log"/>
+
+    <!-- All logger properties -->
+    <property name="ALL_LOG_NAME" value="all.log"/>
+    <property name="ALL_LOG_PATTERN_NAME" value="all.%d{yyyy-MM-dd}.%i.log"/>
+
+    <!-- Application file log -->
+    <appender name="APPLICATION_FILE_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_PATH}/${APPLICATION_LOG_NAME}</file>
         <encoder>
             <charset>UTF-8</charset>
@@ -41,64 +53,126 @@
         </filter>
     </appender>
 
+    <!-- P6spy file log -->
+    <appender name="P6SPY_FILE_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/${P6SPY_LOG_NAME}</file>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%date %level [%thread] %logger{100}.%method.%line - %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/archived/p6spy/${P6SPY_LOG_PATTERN_NAME}</fileNamePattern>
+            <maxFileSize>100MB</maxFileSize>
+        </rollingPolicy>
+    </appender>
     <!-- P6Spy console log -->
-    <appender name="P6SPY_LOG_TO_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <appender name="P6SPY_CONSOLE_LOG" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <charset>UTF-8</charset>
             <pattern>%blue(%msg%n)</pattern>
         </encoder>
     </appender>
 
-    <!-- Root logger -->
+    <!-- Spring file log -->
+    <appender name="SPRING_FILE_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/${SPRING_LOG_NAME}</file>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%date %level [%thread] %logger{100}.%method.%line - %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/archived/spring/${SPRING_LOG_PATTERN_NAME}</fileNamePattern>
+            <maxFileSize>100MB</maxFileSize>
+        </rollingPolicy>
+    </appender>
+
+    <!-- All file log -->
+    <appender name="ALL_FILE_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/${ALL_LOG_NAME}</file>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%date %level [%thread] %logger{100}.%method.%line - %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/archived/all/${ALL_LOG_PATTERN_NAME}</fileNamePattern>
+            <maxFileSize>100MB</maxFileSize>
+        </rollingPolicy>
+    </appender>
+
+    <!-- Application root logger -->
     <root level="INFO">
-        <appender-ref ref="ROOT_FILE"/>
+        <appender-ref ref="APPLICATION_FILE_LOG"/>
+        <appender-ref ref="ALL_FILE_LOG"/>
     </root>
 
     <!-- Hibernate loggers -->
     <logger name="org.hibernate" level="INFO" additivity="false">
         <appender-ref ref="HIBERNATE_FILE_LOG"/>
+        <appender-ref ref="ALL_FILE_LOG"/>
     </logger>
 
     <logger name="org.hibernate.jdbc" level="DEBUG" additivity="false">
         <appender-ref ref="HIBERNATE_FILE_LOG"/>
+        <appender-ref ref="ALL_FILE_LOG"/>
     </logger>
 
     <logger name="org.hibernate.type" level="TRACE" additivity="false">
         <appender-ref ref="HIBERNATE_FILE_LOG"/>
+        <appender-ref ref="ALL_FILE_LOG"/>
     </logger>
 
     <logger name="org.hibernate.tool.hbm2ddl" level="WARN" additivity="false">
         <appender-ref ref="HIBERNATE_FILE_LOG"/>
+        <appender-ref ref="ALL_FILE_LOG"/>
     </logger>
 
     <logger name="org.hibernate.type.descriptor.sql" level="DEBUG" additivity="false">
         <appender-ref ref="HIBERNATE_FILE_LOG"/>
+        <appender-ref ref="ALL_FILE_LOG"/>
     </logger>
 
     <logger name="org.hibernate.SQL" level="DEBUG" additivity="false">
         <appender-ref ref="HIBERNATE_FILE_LOG"/>
+        <appender-ref ref="ALL_FILE_LOG"/>
     </logger>
 
     <logger name="org.hibernate.hql" level="DEBUG" additivity="false">
         <appender-ref ref="HIBERNATE_FILE_LOG"/>
+        <appender-ref ref="ALL_FILE_LOG"/>
     </logger>
 
     <logger name="org.hibernate.stat" level="DEBUG" additivity="false">
         <appender-ref ref="HIBERNATE_FILE_LOG"/>
+        <appender-ref ref="ALL_FILE_LOG"/>
     </logger>
 
     <logger name="org.hibernate.hql.ast.AST" level="INFO" additivity="false">
         <appender-ref ref="HIBERNATE_FILE_LOG"/>
+        <appender-ref ref="ALL_FILE_LOG"/>
     </logger>
 
     <logger name="org.hibernate.cache" level="INFO" additivity="false">
         <appender-ref ref="HIBERNATE_FILE_LOG"/>
+        <appender-ref ref="ALL_FILE_LOG"/>
     </logger>
 
     <!-- P6Spy logger -->
     <logger name="p6spy" level="INFO" additivity="false">
-        <appender-ref ref="ROOT_FILE"/>
+        <appender-ref ref="APPLICATION_FILE_LOG"/>
         <appender-ref ref="HIBERNATE_FILE_LOG"/>
-        <appender-ref ref="P6SPY_LOG_TO_CONSOLE"/>
+        <appender-ref ref="P6SPY_FILE_LOG"/>
+        <appender-ref ref="P6SPY_CONSOLE_LOG"/>
+        <appender-ref ref="ALL_FILE_LOG"/>
+    </logger>
+
+    <!-- Spring loggers -->
+    <logger name="org.springframework.data" level="INFO" additivity="false">
+        <appender-ref ref="SPRING_FILE_LOG"/>
+        <appender-ref ref="ALL_FILE_LOG"/>
+    </logger>
+
+    <logger name="org.springframework.orm" level="INFO" additivity="false">
+        <appender-ref ref="SPRING_FILE_LOG"/>
+        <appender-ref ref="ALL_FILE_LOG"/>
     </logger>
 </configuration>

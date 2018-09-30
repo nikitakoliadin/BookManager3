@@ -29,11 +29,13 @@ public class SQLSimpleFormatter implements MessageFormattingStrategy {
         log.info("Preparing to formatting sql query: {}", sql);
 
         if (sql.isEmpty()) {
-            log.info("\"Preparing to formatting sql query: {} was done successful! Query is empty", sql);
+            log.info("Preparing to formatting sql query was done successful! Query is empty");
             return "";
         }
 
         val batch = "batch".equals(category) ? " add to batch " : "";
+
+        log.info("Preparing to formatting sql query: {} was done successful! Batch: {}", sql, batch);
 
         return String.format("P6Spy - Hibernate: %s %s {elapsed: %dms}",
                 batch,
