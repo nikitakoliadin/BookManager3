@@ -38,6 +38,7 @@
                     * [qthegamep](src/test/java/com/qthegamep)
                         * [bookmanager3](src/test/java/com/qthegamep/bookmanager3)
                             * [config](src/test/java/com/qthegamep/bookmanager3/config)
+                                * [AppConfigTest.java](src/test/java/com/qthegamep/bookmanager3/config/AppConfigTest.java)
                                 * [AppInitializerTest.java](src/test/java/com/qthegamep/bookmanager3/config/AppInitializerTest.java)
                             * [entity](src/test/java/com/qthegamep/bookmanager3/entity)
                                 * [BookTest.java](src/test/java/com/qthegamep/bookmanager3/entity/BookTest.java)
