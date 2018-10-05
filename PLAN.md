@@ -31,6 +31,7 @@
                         * [populateDB.sql](src/main/resources/db/mysql/populateDB.sql)
                         * [spy.properties](src/main/resources/db/mysql/spy.properties)
                     * [postgresql](src/main/resources/db/postgresql)
+                        * [application.properties](src/main/resources/db/postgresql/application.properties)
                         * [initDB.sql](src/main/resources/db/postgresql/initDB.sql)
                         * [populateDB.sql](src/main/resources/db/postgresql/populateDB.sql)
                         * [spy.properties](src/main/resources/db/postgresql/spy.properties)
