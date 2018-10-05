@@ -91,11 +91,11 @@
         <!-- Javax Annotation API -->
         <javax-annotation-api.version>1.3.2</javax-annotation-api.version>
 
-        <!-- MySQL JDBC -->
-        <mysql-jdbc.version>8.0.12</mysql-jdbc.version>
-
         <!-- H2 JDBC -->
         <h2-jdbc.version>1.4.197</h2-jdbc.version>
+
+        <!-- MySQL JDBC -->
+        <mysql-jdbc.version>8.0.12</mysql-jdbc.version>
 
         <!-- PostgreSQL JDBC -->
         <postgresql-jdbc.version>42.2.5</postgresql-jdbc.version>
