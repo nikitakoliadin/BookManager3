@@ -199,18 +199,8 @@
         <appender-ref ref="ALL_FILE_LOG"/>
     </logger>
 
-    <!-- Spring loggers -->
-    <logger name="org.springframework.data" level="INFO" additivity="false">
-        <appender-ref ref="SPRING_FILE_LOG"/>
-        <appender-ref ref="ALL_FILE_LOG"/>
-    </logger>
-
-    <logger name="org.springframework.orm" level="INFO" additivity="false">
-        <appender-ref ref="SPRING_FILE_LOG"/>
-        <appender-ref ref="ALL_FILE_LOG"/>
-    </logger>
-
-    <logger name="org.springframework.test" level="INFO" additivity="false">
+    <!-- Spring logger -->
+    <logger name="org.springframework" level="INFO" additivity="false">
         <appender-ref ref="SPRING_FILE_LOG"/>
         <appender-ref ref="ALL_FILE_LOG"/>
     </logger>
