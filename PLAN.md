@@ -23,6 +23,7 @@
                     * [h2](src/main/resources/db/h2)
                         * [application.properties](src/main/resources/db/h2/application.properties)
                         * [initDB.sql](src/main/resources/db/h2/initDB.sql)
+                        * [populateDB.sql](src/main/resources/db/h2/populateDB.sql)
                         * [spy.properties](src/main/resources/db/h2/spy.properties)
                     * [mysql](src/main/resources/db/mysql)
                         * [application.properties](src/main/resources/db/mysql/application.properties)
