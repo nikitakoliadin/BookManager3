@@ -3,7 +3,8 @@
 ## Project Information
 This project is the manager of books. I used such kinds of databases as:
 
-Main database:
+Main databases:
+* [PostgreSQL](https://www.postgresql.org/)
 * [MySql](https://dev.mysql.com/)
 
 Test database:
@@ -20,11 +21,15 @@ In this project implemented only business logic and database logic. For work wit
 Take a look at the project [PLAN](PLAN.md). All database setting in the folder [resources/db](src/main/resources/db).
 
 SQL scripts:
-* Initialization scripts
-    * [MySQL initialization script](src/main/resources/db/mysql/initDB.sql)
-    * [H2 initialization script](src/main/resources/db/h2/initDB.sql)
-* Populate scripts
-    * [Populate script](src/main/resources/db/populateDB.sql)
+* [H2](src/main/resources/db/h2)
+    * [Initialization script](src/main/resources/db/h2/initDB.sql)
+    * [Populate script](src/main/resources/db/h2/populateDB.sql)
+* [MySQL](src/main/resources/db/mysql)
+    * [Initialization script](src/main/resources/db/mysql/initDB.sql)
+    * [Populate script](src/main/resources/db/mysql/populateDB.sql)
+* [PostgreSQL](src/main/resources/db/postgresql)
+    * [Initialization script](src/main/resources/db/postgresql/initDB.sql)
+    * [Populate script](src/main/resources/db/postgresql/populateDB.sql)
 
 ## Technologies Information
 | Technology     | Badge |
@@ -81,8 +86,9 @@ If you want to use this project:
     * [Javax Servlet API](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/)
     * [Javax Annotation API](https://docs.oracle.com/javase/7/docs/api/javax/annotation/package-summary.html)
 * **Database:**
-    * [MySQL](https://dev.mysql.com/)
     * [H2](http://www.h2database.com/html/main.html)
+    * [MySQL](https://dev.mysql.com/)
+    * [PostgreSQL](https://www.postgresql.org/)
 
 ## Resources Information
 * **Dependencies:**
@@ -105,8 +111,9 @@ If you want to use this project:
     * [Spring Test](https://mvnrepository.com/artifact/org.springframework/spring-test)
     * [Javax Servlet API](https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api)
     * [Javax Annotation API](https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api)
-    * [MySQL JDBC](https://mvnrepository.com/artifact/mysql/mysql-connector-java)
     * [H2 JDBC](https://mvnrepository.com/artifact/com.h2database/h2)
+    * [MySQL JDBC](https://mvnrepository.com/artifact/mysql/mysql-connector-java)
+    * [PostgreSQL JDBC](https://mvnrepository.com/artifact/org.postgresql/postgresql)
 * **Plugins:**
     * [Specifying Resource Directories](https://maven.apache.org/plugins/maven-resources-plugin/examples/resource-directory.html)
     * [Apache Maven Compiler Plugin](https://maven.apache.org/plugins/maven-compiler-plugin/)
