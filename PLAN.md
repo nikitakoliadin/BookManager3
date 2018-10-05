@@ -28,6 +28,7 @@
                     * [mysql](src/main/resources/db/mysql)
                         * [application.properties](src/main/resources/db/mysql/application.properties)
                         * [initDB.sql](src/main/resources/db/mysql/initDB.sql)
+                        * [populateDB.sql](src/main/resources/db/mysql/populateDB.sql)
                         * [spy.properties](src/main/resources/db/mysql/spy.properties)
                     * [populateDB.sql](src/main/resources/db/populateDB.sql)
                 * [META-INF](src/main/resources/META-INF)
