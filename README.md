@@ -2,13 +2,11 @@
 
 ## Project Information
 This project is the manager of books. I used such kinds of databases as:
-
-Main databases:
-* [PostgreSQL](https://www.postgresql.org/)
-* [MySql](https://dev.mysql.com/)
-
-Test database:
-* [H2](http://www.h2database.com/html/main.html)
+* Main databases:
+    * [PostgreSQL](https://www.postgresql.org/)
+    * [MySql](https://dev.mysql.com/)
+* Test database:
+    * [H2](http://www.h2database.com/html/main.html)
 
 In this project implemented standard [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations using [Spring Data](https://spring.io/projects/spring-data) such as:
 * Create
