@@ -91,11 +91,14 @@
         <!-- Javax Annotation API -->
         <javax-annotation-api.version>1.3.2</javax-annotation-api.version>
 
+        <!-- H2 JDBC -->
+        <h2-jdbc.version>1.4.197</h2-jdbc.version>
+
         <!-- MySQL JDBC -->
         <mysql-jdbc.version>8.0.12</mysql-jdbc.version>
 
-        <!-- H2 JDBC -->
-        <h2-jdbc.version>1.4.197</h2-jdbc.version>
+        <!-- PostgreSQL JDBC -->
+        <postgresql-jdbc.version>42.2.5</postgresql-jdbc.version>
     </properties>
 
     <build>
@@ -389,7 +392,7 @@
     </dependencyManagement>
 
     <profiles>
-        <!-- Test profile -->
+        <!-- H2 database profile -->
         <profile>
             <id>h2-database</id>
             <build>
@@ -410,7 +413,7 @@
             </dependencies>
         </profile>
 
-        <!-- Main profile -->
+        <!-- MySQL database profile -->
         <profile>
             <id>mysql-database</id>
             <build>
@@ -427,6 +430,27 @@
                     <groupId>mysql</groupId>
                     <artifactId>mysql-connector-java</artifactId>
                     <version>${mysql-jdbc.version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
+
+        <!-- PostgreSQL database profile -->
+        <profile>
+            <id>postgresql-database</id>
+            <build>
+                <!-- PostgreSQL resources directory -->
+                <resources>
+                    <resource>
+                        <directory>src/main/resources/db/postgresql</directory>
+                    </resource>
+                </resources>
+            </build>
+            <dependencies>
+                <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+                <dependency>
+                    <groupId>org.postgresql</groupId>
+                    <artifactId>postgresql</artifactId>
+                    <version>${postgresql-jdbc.version}</version>
                 </dependency>
             </dependencies>
         </profile>
