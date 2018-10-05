@@ -32,7 +32,7 @@
                         * [spy.properties](src/main/resources/db/mysql/spy.properties)
                     * [postgresql](src/main/resources/db/postgresql)
                         * [initDB.sql](src/main/resources/db/postgresql/initDB.sql)
-                    * [populateDB.sql](src/main/resources/db/populateDB.sql)
+                        * [populateDB.sql](src/main/resources/db/postgresql/populateDB.sql)
                 * [META-INF](src/main/resources/META-INF)
                     * [persistence.xml](src/main/resources/META-INF/persistence.xml)
                 * [logback.xml](src/main/resources/logback.xml)
