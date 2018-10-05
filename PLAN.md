@@ -30,6 +30,8 @@
                         * [initDB.sql](src/main/resources/db/mysql/initDB.sql)
                         * [populateDB.sql](src/main/resources/db/mysql/populateDB.sql)
                         * [spy.properties](src/main/resources/db/mysql/spy.properties)
+                    * [postgresql](src/main/resources/db/postgresql)
+                        * [initDB.sql](src/main/resources/db/postgresql/initDB.sql)
                     * [populateDB.sql](src/main/resources/db/populateDB.sql)
                 * [META-INF](src/main/resources/META-INF)
                     * [persistence.xml](src/main/resources/META-INF/persistence.xml)
