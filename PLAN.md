@@ -52,6 +52,8 @@
                                 * [AppInitializerTest.java](src/test/java/com/qthegamep/bookmanager3/config/AppInitializerTest.java)
                             * [entity](src/test/java/com/qthegamep/bookmanager3/entity)
                                 * [BookTest.java](src/test/java/com/qthegamep/bookmanager3/entity/BookTest.java)
+                            * [exception](src/test/java/com/qthegamep/bookmanager3/exception)
+                                * [EntityAlreadyExistsExceptionTest.java](src/test/java/com/qthegamep/bookmanager3/exception/EntityAlreadyExistsExceptionTest.java)
                             * [formatter](src/test/java/com/qthegamep/bookmanager3/formatter)
                                 * [SQLSimpleFormatterTest.java](src/test/java/com/qthegamep/bookmanager3/formatter/SQLSimpleFormatterTest.java)
                             * [repository](src/test/java/com/qthegamep/bookmanager3/repository)
