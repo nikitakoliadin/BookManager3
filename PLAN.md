@@ -17,6 +17,8 @@
                                 * [SQLSimpleFormatter.java](src/main/java/com/qthegamep/bookmanager3/formatter/SQLSimpleFormatter.java)
                             * [repository](src/main/java/com/qthegamep/bookmanager3/repository)
                                 * [BookRepository.java](src/main/java/com/qthegamep/bookmanager3/repository/BookRepository.java)
+                            * [service](src/main/java/com/qthegamep/bookmanager3/service)
+                                * [BookService.java](src/main/java/com/qthegamep/bookmanager3/service/BookService.java)
                             * [Application.java](src/main/java/com/qthegamep/bookmanager3/Application.java)
             * [resources](src/main/resources)
                 * [db](src/main/resources/db)
