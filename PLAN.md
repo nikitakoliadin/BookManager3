@@ -13,6 +13,8 @@
                                 * [AppInitializer.java](src/main/java/com/qthegamep/bookmanager3/config/AppInitializer.java)
                             * [entity](src/main/java/com/qthegamep/bookmanager3/entity)
                                 * [Book.java](src/main/java/com/qthegamep/bookmanager3/entity/Book.java)
+                            * [exception](src/main/java/com/qthegamep/bookmanager3/exception)
+                                * [EntityAlreadyExistsException.java](src/main/java/com/qthegamep/bookmanager3/exception/EntityAlreadyExistsException.java)
                             * [formatter](src/main/java/com/qthegamep/bookmanager3/formatter)
                                 * [SQLSimpleFormatter.java](src/main/java/com/qthegamep/bookmanager3/formatter/SQLSimpleFormatter.java)
                             * [repository](src/main/java/com/qthegamep/bookmanager3/repository)
