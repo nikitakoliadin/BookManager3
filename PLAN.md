@@ -59,6 +59,8 @@
                                 * [SQLSimpleFormatterTest.java](src/test/java/com/qthegamep/bookmanager3/formatter/SQLSimpleFormatterTest.java)
                             * [repository](src/test/java/com/qthegamep/bookmanager3/repository)
                                 * [BookRepositoryTest.java](src/test/java/com/qthegamep/bookmanager3/repository/BookRepositoryTest.java)
+                            * [service](src/test/java/com/qthegamep/bookmanager3/service)
+                                * [BookServiceImplTest.java](src/test/java/com/qthegamep/bookmanager3/service/BookServiceImplTest.java)
                             * [testhelper](src/test/java/com/qthegamep/bookmanager3/testhelper)
                                 * [rule](src/test/java/com/qthegamep/bookmanager3/testhelper/rule)
                                     * [Rules.java](src/test/java/com/qthegamep/bookmanager3/testhelper/rule/Rules.java)
