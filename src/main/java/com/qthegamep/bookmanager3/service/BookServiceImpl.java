@@ -7,7 +7,6 @@ import com.qthegamep.bookmanager3.repository.BookRepository;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +36,8 @@ public class BookServiceImpl implements BookService {
 
     /**
      * This service method implements adding book entity to the database.
+     * If Book entity is already exists in the database then would be thrown
+     * {@link com.qthegamep.bookmanager3.exception.EntityAlreadyExistsException}.
      *
      * @param book is the entity that will be added to the database.
      *             Should not be null.
@@ -57,6 +58,8 @@ public class BookServiceImpl implements BookService {
 
     /**
      * This service method implements adding list of books entities to the database.
+     * If one of book entities is already exists in the database then would be thrown
+     * {@link com.qthegamep.bookmanager3.exception.EntityAlreadyExistsException}.
      *
      * @param books is the list of entities that will be added to the database.
      *              Should not be null.
@@ -257,7 +260,7 @@ public class BookServiceImpl implements BookService {
         log.info("All books entities was removed from the database");
     }
 
-    private void checkIfBookExists(@NotNull Book book) {
+    private void checkIfBookExists(@NonNull Book book) {
         var exists = false;
 
         val id = book.getId();
