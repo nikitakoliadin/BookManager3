@@ -61,7 +61,7 @@
         <assertj.version>3.11.1</assertj.version>
 
         <!-- Mockito -->
-        <mockito.version>2.22.0</mockito.version>
+        <mockito.version>2.23.0</mockito.version>
 
         <!-- SLF4J -->
         <slf4j.version>1.7.25</slf4j.version>
