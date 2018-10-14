@@ -1,7 +1,9 @@
 package com.qthegamep.bookmanager3.service;
 
 import com.qthegamep.bookmanager3.entity.Book;
+import com.qthegamep.bookmanager3.exception.EntityAlreadyExistsException;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 /**
@@ -11,64 +13,73 @@ public interface BookService {
 
     /**
      * This service method should add book entity to the database.
+     * If book entity is already exists in the database then would be thrown
+     * {@link com.qthegamep.bookmanager3.exception.EntityAlreadyExistsException}.
      *
      * @param book is the entity that will be added to the database.
      * @return book entity.
+     * @throws EntityAlreadyExistsException when trying to add book entity when this entity already exists.
      */
-    Book add(Book book);
+    Book add(Book book) throws EntityAlreadyExistsException;
 
     /**
-     * This service method should add list of books entities to the database.
+     * This service method should add list of book entities to the database.
+     * If book entity is already exists in the database then would be thrown
+     * {@link com.qthegamep.bookmanager3.exception.EntityAlreadyExistsException}.
      *
      * @param books is the list of entities that will be added to the database.
-     * @return list of books entities.
+     * @return list of book entities.
+     * @throws EntityAlreadyExistsException when trying to add book entity when this entity already exists.
      */
-    List<Book> addAll(List<Book> books);
+    List<Book> addAll(List<Book> books) throws EntityAlreadyExistsException;
 
     /**
      * This service method should return book entity from the database by id.
+     * If book entity is not exists in the database then would be thrown
+     * {@link javax.persistence.EntityNotFoundException}.
      *
      * @param id is the parameter by which the entity will be returned.
      * @return book entity.
+     * @throws EntityNotFoundException when trying to get entity by id when this entity does not exists.
      */
-    Book getById(Long id);
+    Book getById(Long id) throws EntityNotFoundException;
 
     /**
-     * This service method should return list of books entities from the database by name.
+     * This service method should return list of book entities from the database by name.
      *
      * @param name is the parameter by which the list of entities will be returned.
-     * @return list of books entities.
+     * @return list of book entities.
      */
     List<Book> getByName(String name);
 
     /**
-     * This service method should return list of books entities from the database by author.
+     * This service method should return list of book entities from the database by author.
      *
      * @param author is the parameter by which the list of entities will be returned.
-     * @return list of books entities.
+     * @return list of book entities.
      */
     List<Book> getByAuthor(String author);
 
     /**
-     * This service method should return list of books entities from the database by print year.
+     * This service method should return list of book entities from the database by print year.
      *
      * @param printYear is the parameter by which the list of entities will be returned.
-     * @return list of books entities.
+     * @return list of book entities.
      */
     List<Book> getByPrintYear(int printYear);
 
     /**
-     * This service method should return list of books entities from the database by read.
+     * This service method should return list of book entities from the database by read.
      *
      * @param read is the parameter by which the list of entities will be returned.
-     * @return list of books entities.
+     * @return list of book entities.
      */
     List<Book> getByRead(boolean read);
 
     /**
-     * This service method should return list of all books entities from the database.
+     * This service method should return list of all book entities from the database.
      *
-     * @return list of books entities.
+     * @return list of book entities.
      */
     List<Book> getAll();
 
@@ -81,10 +92,10 @@ public interface BookService {
     Book update(Book book);
 
     /**
-     * This service method should update list of books entities in the database.
+     * This service method should update list of book entities in the database.
      *
      * @param books is the list of entities that will be updated in the database.
-     * @return list of books entities.
+     * @return list of book entities.
      */
     List<Book> updateAll(List<Book> books);
 
@@ -96,14 +107,14 @@ public interface BookService {
     void remove(Book book);
 
     /**
-     * This service method should delete list of books entities from the database.
+     * This service method should delete list of book entities from the database.
      *
      * @param books is the list of entities that will be deleted from the database.
      */
     void removeAll(List<? extends Book> books);
 
     /**
-     * This service method should delete all entities from the database.
+     * This service method should delete all book entities from the database.
      */
     void removeAll();
 }
