@@ -11,42 +11,61 @@
 
     <url>http://maven.apache.org</url>
 
+    <prerequisites>
+        <maven>3.0</maven>
+    </prerequisites>
+
     <properties>
         <!-- Java -->
         <java.version>1.10</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
+        <!-- Clean plugin -->
+        <clean-plugin.version>3.1.0</clean-plugin.version>
+
+        <!-- Resources plugin -->
+        <resources-plugin.version>3.1.0</resources-plugin.version>
+
         <!-- Compiler plugin -->
-        <compilerPlugin.version>3.7.0</compilerPlugin.version>
+        <compiler-plugin.version>3.7.0</compiler-plugin.version>
 
         <!-- Surefire plugin -->
-        <surefirePlugin.version>2.22.0</surefirePlugin.version>
+        <surefire-plugin.version>2.22.0</surefire-plugin.version>
 
         <!-- Assembly plugin -->
-        <assemblyPlugin.version>3.1.0</assemblyPlugin.version>
-        <assemblyPlugin.finalName>BookManager3</assemblyPlugin.finalName>
-        <assemblyPlugin.mainClass>com.qthegamep.bookmanager3.Application</assemblyPlugin.mainClass>
-        <assemblyPlugin.appendAssemblyId>false</assemblyPlugin.appendAssemblyId>
+        <assembly-plugin.version>3.1.0</assembly-plugin.version>
+        <assembly-plugin.finalName>BookManager3</assembly-plugin.finalName>
+        <assembly-plugin.mainClass>com.qthegamep.bookmanager3.Application</assembly-plugin.mainClass>
+        <assembly-plugin.appendAssemblyId>false</assembly-plugin.appendAssemblyId>
+
+        <!-- JAR plugin -->
+        <jar-plugin.version>3.1.0</jar-plugin.version>
+
+        <!-- Install plugin -->
+        <install-plugin.version>3.0.0-M1</install-plugin.version>
 
         <!-- Site plugin -->
-        <sitePlugin.version>3.7.1</sitePlugin.version>
+        <site-plugin.version>3.7.1</site-plugin.version>
 
         <!-- Report plugin -->
-        <reportPlugin.version>3.0.0</reportPlugin.version>
+        <report-plugin.version>3.0.0</report-plugin.version>
+
+        <!-- Deploy plugin -->
+        <deploy-plugin.version>3.0.0-M1</deploy-plugin.version>
 
         <!-- JaCoCo plugin -->
-        <jacocoPlugin.version>0.8.1</jacocoPlugin.version>
+        <jacoco-plugin.version>0.8.1</jacoco-plugin.version>
 
         <!-- Pitest plugin -->
-        <pitestPlugin.version>1.4.0</pitestPlugin.version>
-        <pitestPlugin.verbose>false</pitestPlugin.verbose>
-        <pitestPlugin.threads>2</pitestPlugin.threads>
-        <pitestPlugin.timeoutConstant>300000</pitestPlugin.timeoutConstant>
+        <pitest-plugin.version>1.4.0</pitest-plugin.version>
+        <pitest-plugin.verbose>false</pitest-plugin.verbose>
+        <pitest-plugin.threads>2</pitest-plugin.threads>
+        <pitest-plugin.timeoutConstant>300000</pitest-plugin.timeoutConstant>
 
         <!-- Versions plugin -->
-        <versionsPlugin.version>2.5</versionsPlugin.version>
-        <versionsPlugin.generateBackupPoms>false</versionsPlugin.generateBackupPoms>
+        <versions-plugin.version>2.5</versions-plugin.version>
+        <versions-plugin.generateBackupPoms>false</versions-plugin.generateBackupPoms>
 
         <!-- JetBrains -->
         <jetbrains-annotations.version>16.0.3</jetbrains-annotations.version>
@@ -110,11 +129,25 @@
         </resources>
 
         <plugins>
+            <!-- Clean plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>${clean-plugin.version}</version>
+            </plugin>
+
+            <!-- Resources plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${resources-plugin.version}</version>
+            </plugin>
+
             <!-- Compiler plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${compilerPlugin.version}</version>
+                <version>${compiler-plugin.version}</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
@@ -125,25 +158,25 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${surefirePlugin.version}</version>
+                <version>${surefire-plugin.version}</version>
             </plugin>
 
             <!-- Assembly plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>${assemblyPlugin.version}</version>
+                <version>${assembly-plugin.version}</version>
                 <configuration>
-                    <finalName>${assemblyPlugin.finalName}</finalName>
+                    <finalName>${assembly-plugin.finalName}</finalName>
                     <archive>
                         <manifest>
-                            <mainClass>${assemblyPlugin.mainClass}</mainClass>
+                            <mainClass>${assembly-plugin.mainClass}</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
-                    <appendAssemblyId>${assemblyPlugin.appendAssemblyId}</appendAssemblyId>
+                    <appendAssemblyId>${assembly-plugin.appendAssemblyId}</appendAssemblyId>
                 </configuration>
                 <executions>
                     <execution>
@@ -156,25 +189,46 @@
                 </executions>
             </plugin>
 
+            <!-- JAR plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${jar-plugin.version}</version>
+            </plugin>
+
+            <!-- Install plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>${install-plugin.version}</version>
+            </plugin>
+
             <!-- Site plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>${sitePlugin.version}</version>
+                <version>${site-plugin.version}</version>
             </plugin>
 
             <!-- Report plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>${reportPlugin.version}</version>
+                <version>${report-plugin.version}</version>
+            </plugin>
+
+            <!-- Deploy plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>${deploy-plugin.version}</version>
             </plugin>
 
             <!-- JaCoCo plugin -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${jacocoPlugin.version}</version>
+                <version>${jacoco-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -195,11 +249,11 @@
             <plugin>
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
-                <version>${pitestPlugin.version}</version>
+                <version>${pitest-plugin.version}</version>
                 <configuration>
-                    <verbose>${pitestPlugin.verbose}</verbose>
-                    <threads>${pitestPlugin.threads}</threads>
-                    <timeoutConstant>${pitestPlugin.timeoutConstant}</timeoutConstant>
+                    <verbose>${pitest-plugin.verbose}</verbose>
+                    <threads>${pitest-plugin.threads}</threads>
+                    <timeoutConstant>${pitest-plugin.timeoutConstant}</timeoutConstant>
                 </configuration>
                 <executions>
                     <execution>
@@ -216,9 +270,9 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
-                <version>${versionsPlugin.version}</version>
+                <version>${versions-plugin.version}</version>
                 <configuration>
-                    <generateBackupPoms>${versionsPlugin.generateBackupPoms}</generateBackupPoms>
+                    <generateBackupPoms>${versions-plugin.generateBackupPoms}</generateBackupPoms>
                 </configuration>
             </plugin>
         </plugins>
@@ -395,6 +449,7 @@
         <!-- H2 database profile -->
         <profile>
             <id>h2-database</id>
+
             <build>
                 <!-- H2 resources directory -->
                 <resources>
@@ -403,6 +458,7 @@
                     </resource>
                 </resources>
             </build>
+
             <dependencies>
                 <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
                 <dependency>
@@ -416,6 +472,7 @@
         <!-- MySQL database profile -->
         <profile>
             <id>mysql-database</id>
+
             <build>
                 <!-- MySQL resources directory -->
                 <resources>
@@ -424,6 +481,7 @@
                     </resource>
                 </resources>
             </build>
+
             <dependencies>
                 <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
                 <dependency>
@@ -437,6 +495,7 @@
         <!-- PostgreSQL database profile -->
         <profile>
             <id>postgresql-database</id>
+
             <build>
                 <!-- PostgreSQL resources directory -->
                 <resources>
@@ -445,6 +504,7 @@
                     </resource>
                 </resources>
             </build>
+
             <dependencies>
                 <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
                 <dependency>
