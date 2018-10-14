@@ -36,7 +36,7 @@ SQL scripts:
 | Travis CI      | [![Build Status](https://travis-ci.org/qThegamEp/BookManager3.svg?branch=master)](https://travis-ci.org/qThegamEp/BookManager3) |
 | AppVeyor CI    | [![Build status](https://ci.appveyor.com/api/projects/status/95k7375fc9bddrbt/branch/master?svg=true)](https://ci.appveyor.com/project/qThegamEp/bookmanager3/branch/master) |
 | Codecov        | [![codecov](https://codecov.io/gh/qThegamEp/BookManager3/branch/master/graph/badge.svg)](https://codecov.io/gh/qThegamEp/BookManager3) |
-| Codacy         | [![Codacy Badge](https://api.codacy.com/project/badge/Grade/34e5570a83e548be878b55f9cd2dac2d)](https://www.codacy.com/app/qThegamEp/BookManager3?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=qThegamEp/BookManager3&amp;utm_campaign=Badge_Grade) |
+| Codacy         | [![Codacy Badge](https://api.codacy.com/project/badge/Grade/236d354c91424309add9abdc91722f54)](https://www.codacy.com/app/qThegamEp/BookManager3?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=qThegamEp/BookManager3&amp;utm_campaign=Badge_Grade) |
 | Gitter         | [![Gitter](https://badges.gitter.im/qThegamEp/BookManager3.svg)](https://gitter.im/qThegamEp/BookManager3?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) |
 
 ## Import Information
