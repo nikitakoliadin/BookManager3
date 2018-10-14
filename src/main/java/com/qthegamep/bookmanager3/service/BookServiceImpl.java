@@ -10,6 +10,7 @@ import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Objects;
 
@@ -42,9 +43,10 @@ public class BookServiceImpl implements BookService {
      * @param book is the entity that will be added to the database.
      *             Should not be null.
      * @return book entity.
+     * @throws EntityAlreadyExistsException when trying add book entity when this entity already exists.
      */
     @Override
-    public Book add(@NonNull Book book) {
+    public Book add(@NonNull Book book) throws EntityAlreadyExistsException {
         log.info("Preparing to add entity: {}", book);
 
         checkIfBookExists(book);
@@ -57,16 +59,17 @@ public class BookServiceImpl implements BookService {
     }
 
     /**
-     * This service method implements adding list of books entities to the database.
+     * This service method implements adding list of book entities to the database.
      * If one of book entities is already exists in the database then would be thrown
      * {@link com.qthegamep.bookmanager3.exception.EntityAlreadyExistsException}.
      *
      * @param books is the list of entities that will be added to the database.
      *              Should not be null.
-     * @return list of books entities.
+     * @return list of book entities.
+     * @throws EntityAlreadyExistsException when trying add book entity when this entity already exists.
      */
     @Override
-    public List<Book> addAll(@NonNull List<Book> books) {
+    public List<Book> addAll(@NonNull List<Book> books) throws EntityAlreadyExistsException {
         log.info("Preparing to add all entities: {}", books);
 
         books.forEach(this::checkIfBookExists);
@@ -80,13 +83,16 @@ public class BookServiceImpl implements BookService {
 
     /**
      * This service method implements returning book entity from the database by id.
+     * If book entity is not exists in the database then would be thrown
+     * {@link javax.persistence.EntityNotFoundException}.
      *
      * @param id is the parameter by which the entity will be returned.
      *           Should not be null.
      * @return book entity.
+     * @throws EntityNotFoundException when trying to get entity by id when this entity does not exists.
      */
     @Override
-    public Book getById(@NonNull Long id) {
+    public Book getById(@NonNull Long id) throws EntityNotFoundException {
         log.info("Preparing to get book entity by id: {}", id);
 
         val book = bookRepository.getOne(id);
@@ -97,15 +103,15 @@ public class BookServiceImpl implements BookService {
     }
 
     /**
-     * This service method implements returning list of books entities from the database by name.
+     * This service method implements returning list of book entities from the database by name.
      *
      * @param name is the parameter by which the list of entities will be returned.
      *             Should not be null.
-     * @return list of books entities.
+     * @return list of book entities.
      */
     @Override
     public List<Book> getByName(@NonNull String name) {
-        log.info("Preparing to get books entities by name: {}", name);
+        log.info("Preparing to get book entities by name: {}", name);
 
         val books = bookRepository.findBooksByName(name);
 
@@ -115,15 +121,15 @@ public class BookServiceImpl implements BookService {
     }
 
     /**
-     * This service method implements returning list of books entities from the database by author.
+     * This service method implements returning list of book entities from the database by author.
      *
      * @param author is the parameter by which the list of entities will be returned.
      *               Should not be null.
-     * @return list of books entities.
+     * @return list of book entities.
      */
     @Override
     public List<Book> getByAuthor(@NonNull String author) {
-        log.info("Preparing to get books entities by author: {}", author);
+        log.info("Preparing to get book entities by author: {}", author);
 
         val books = bookRepository.findBooksByAuthor(author);
 
@@ -133,14 +139,14 @@ public class BookServiceImpl implements BookService {
     }
 
     /**
-     * This service method implements returning list of books entities from the database by print year.
+     * This service method implements returning list of book entities from the database by print year.
      *
      * @param printYear is the parameter by which the list of entities will be returned.
-     * @return list of books entities.
+     * @return list of book entities.
      */
     @Override
     public List<Book> getByPrintYear(int printYear) {
-        log.info("Preparing to get books entities by print year: {}", printYear);
+        log.info("Preparing to get book entities by print year: {}", printYear);
 
         val books = bookRepository.findBooksByPrintYear(printYear);
 
@@ -150,14 +156,14 @@ public class BookServiceImpl implements BookService {
     }
 
     /**
-     * This service method implements returning list of books entities from the database by read.
+     * This service method implements returning list of book entities from the database by read.
      *
      * @param read is the parameter by which the list of entities will be returned.
-     * @return list of books entities.
+     * @return list of book entities.
      */
     @Override
     public List<Book> getByRead(boolean read) {
-        log.info("Preparing to get books entities by read: {}", read);
+        log.info("Preparing to get book entities by read: {}", read);
 
         val books = bookRepository.findBooksByRead(read);
 
@@ -167,13 +173,13 @@ public class BookServiceImpl implements BookService {
     }
 
     /**
-     * This service method implements returning list of all books entities from the database.
+     * This service method implements returning list of all book entities from the database.
      *
-     * @return list of books entities.
+     * @return list of book entities.
      */
     @Override
     public List<Book> getAll() {
-        log.info("Preparing to get all books entities");
+        log.info("Preparing to get all book entities");
 
         val books = bookRepository.findAll();
 
@@ -201,11 +207,11 @@ public class BookServiceImpl implements BookService {
     }
 
     /**
-     * This service method implements updating list of books entities in the database.
+     * This service method implements updating list of book entities in the database.
      *
      * @param books is the list of entities that will be updated in the database.
      *              Should not be null.
-     * @return list of books entities.
+     * @return list of book entities.
      */
     @Override
     public List<Book> updateAll(@NonNull List<Book> books) {
@@ -234,7 +240,7 @@ public class BookServiceImpl implements BookService {
     }
 
     /**
-     * This service method implements deleting list of books entities from the database.
+     * This service method implements deleting list of book entities from the database.
      *
      * @param books is the list of entities that will be deleted from the database.
      *              Should not be null.
@@ -253,14 +259,14 @@ public class BookServiceImpl implements BookService {
      */
     @Override
     public void removeAll() {
-        log.info("Preparing to remove all books entities");
+        log.info("Preparing to remove all book entities");
 
         bookRepository.deleteAll();
 
-        log.info("All books entities was removed from the database");
+        log.info("All book entities was removed from the database");
     }
 
-    private void checkIfBookExists(@NonNull Book book) {
+    private void checkIfBookExists(@NonNull Book book) throws EntityAlreadyExistsException {
         var exists = false;
 
         val id = book.getId();
