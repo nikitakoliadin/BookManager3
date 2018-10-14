@@ -81,6 +81,6 @@
     * [README.md](README.md)
 
 ## Bugs && Messages
-* AppConfig class
-    * dataSource() -> setDriverClassName() mutation
-    * transactionManager() -> setEntityManagerFactory() mutation
+* [AppConfig.java](src/main/java/com/qthegamep/bookmanager3/config/AppConfig.java) -> 2 mutation is not killed:
+    * public DataSource dataSource() {} -> dataSource.setDriverClassName(env.getRequiredProperty(DB_DRIVER_CLASS_NAME));
+    * public JpaTransactionManager transactionManager() {} -> transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
