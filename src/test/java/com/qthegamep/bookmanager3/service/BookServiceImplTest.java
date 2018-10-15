@@ -21,9 +21,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import org.junit.rules.ExternalResource;
 import org.junit.rules.Stopwatch;
+import org.hibernate.PropertyValueException;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.dao.DataIntegrityViolationException;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
@@ -31,6 +33,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+@Transactional
 @WebAppConfiguration
 @ContextConfiguration("classpath:testApplicationContext.xml")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
@@ -68,7 +71,7 @@ public class BookServiceImplTest {
     }
 
     @Test
-    public void shouldCreateBookService() {
+    public void shouldAutowiredBookService() {
         assertThat(bookService).isNotNull();
         assertThat(bookServiceMock).isNotNull();
     }
@@ -94,7 +97,6 @@ public class BookServiceImplTest {
     }
 
     @Test
-    @Transactional
     public void shouldBeEmptyDatabaseBeforeEachTest() {
         val allBooksFromTheDatabase = bookService.getAll();
 
@@ -104,7 +106,6 @@ public class BookServiceImplTest {
     }
 
     @Test
-    @Transactional
     public void shouldAddBookCorrectly() {
         val addedBook = bookService.add(firstBook);
 
@@ -117,14 +118,13 @@ public class BookServiceImplTest {
     public void shouldCallAddMethodCorrectly() {
         bookServiceMock.add(firstBook);
 
-        verify(bookRepositoryMock, times(1)).save(firstBook);
         verify(bookRepositoryMock, times(1)).existsById(firstBook.getId());
+        verify(bookRepositoryMock, times(1)).save(firstBook);
 
         verifyNoMoreInteractions(bookRepositoryMock);
     }
 
     @Test
-    @Transactional
     public void shouldAddBookWithNullIdCorrectly() {
         firstBook.setId(null);
 
@@ -136,7 +136,6 @@ public class BookServiceImplTest {
     }
 
     @Test
-    @Transactional
     public void shouldThrowNullPointerExceptionWhenAddNullBook() {
         val exceptionMessage = "book is marked @NonNull but is null";
 
@@ -146,7 +145,6 @@ public class BookServiceImplTest {
     }
 
     @Test
-    @Transactional
     public void shouldThrowEntityAlreadyExistsExceptionWhenAddAlreadyExistedBook() {
         val exceptionMessage = "Entity: Book(id=1, name=test firstBook, author=test firstAuthor, printYear=2000, " +
                 "read=false) already exists. You should update this entity or add new one";
@@ -159,7 +157,21 @@ public class BookServiceImplTest {
     }
 
     @Test
-    @Transactional
+    public void shouldThrowDataIntegrityViolationExceptionWhenAddIncorrectEntity() {
+        val exceptionMessage = "not-null property references a null or transient value : " +
+                "com.qthegamep.bookmanager3.entity.Book.name; nested exception is " +
+                "org.hibernate.PropertyValueException: not-null property references a null or transient value : " +
+                "com.qthegamep.bookmanager3.entity.Book.name";
+
+        firstBook.setName(null);
+
+        assertThatExceptionOfType(DataIntegrityViolationException.class)
+                .isThrownBy(() -> bookService.add(firstBook))
+                .withMessage(exceptionMessage)
+                .withCauseExactlyInstanceOf(PropertyValueException.class);
+    }
+
+    @Test
     public void shouldAddAllBooksCorrectly() {
         val addedBooks = bookService.addAll(books);
 
@@ -174,15 +186,14 @@ public class BookServiceImplTest {
     public void shouldCallAddAllMethodCorrectly() {
         bookServiceMock.addAll(books);
 
-        verify(bookRepositoryMock, times(1)).saveAll(books);
         verify(bookRepositoryMock, times(1)).existsById(firstBook.getId());
         verify(bookRepositoryMock, times(1)).existsById(secondBook.getId());
+        verify(bookRepositoryMock, times(1)).saveAll(books);
 
         verifyNoMoreInteractions(bookRepositoryMock);
     }
 
     @Test
-    @Transactional
     public void shouldAddAllBooksWithNullIdCorrectly() {
         books.get(0).setId(null);
         books.get(1).setId(null);
@@ -196,7 +207,6 @@ public class BookServiceImplTest {
     }
 
     @Test
-    @Transactional
     public void shouldThrowNullPointerExceptionWhenAddAllNullListOfBooks() {
         val exceptionMessage = "books is marked @NonNull but is null";
 
@@ -206,7 +216,6 @@ public class BookServiceImplTest {
     }
 
     @Test
-    @Transactional
     public void shouldThrowNullPointerExceptionWhenAddAllListWithNullBook() {
         val exceptionMessage = "book is marked @NonNull but is null";
 
@@ -218,7 +227,6 @@ public class BookServiceImplTest {
     }
 
     @Test
-    @Transactional
     public void shouldThrowEntityAlreadyExistsExceptionWhenAddAllListOfAlreadyExistedBooks() {
         val exceptionMessage = "Entity: Book(id=1, name=test firstBook, author=test firstAuthor, printYear=2000, " +
                 "read=false) already exists. You should update this entity or add new one";
@@ -231,7 +239,21 @@ public class BookServiceImplTest {
     }
 
     @Test
-    @Transactional
+    public void shouldThrowDataIntegrityViolationExceptionWhenAddAllListWithIncorrectEntity() {
+        val exceptionMessage = "not-null property references a null or transient value : " +
+                "com.qthegamep.bookmanager3.entity.Book.name; nested exception is " +
+                "org.hibernate.PropertyValueException: not-null property references a null or transient value : " +
+                "com.qthegamep.bookmanager3.entity.Book.name";
+
+        books.get(0).setName(null);
+
+        assertThatExceptionOfType(DataIntegrityViolationException.class)
+                .isThrownBy(() -> bookService.addAll(books))
+                .withMessage(exceptionMessage)
+                .withCauseExactlyInstanceOf(PropertyValueException.class);
+    }
+
+    @Test
     public void shouldGetByIdBookCorrectly() {
         bookService.add(firstBook);
 
@@ -255,7 +277,6 @@ public class BookServiceImplTest {
     }
 
     @Test
-    @Transactional
     public void shouldThrowNullPointerExceptionWhenGetByNullId() {
         val exceptionMessage = "id is marked @NonNull but is null";
 
@@ -265,7 +286,6 @@ public class BookServiceImplTest {
     }
 
     @Test
-    @Transactional
     public void shouldThrowEntityNotFoundExceptionWhenGetByIdNotExistEntity() {
         val exceptionMessage = "Unable to find com.qthegamep.bookmanager3.entity.Book with id 2";
 
@@ -277,7 +297,6 @@ public class BookServiceImplTest {
     }
 
     @Test
-    @Transactional
     public void shouldGetByNameBooksCorrectly() {
         bookService.addAll(books);
 
@@ -299,7 +318,6 @@ public class BookServiceImplTest {
     }
 
     @Test
-    @Transactional
     public void shouldThrowNullPointerExceptionWhenGetByNullName() {
         val exceptionMessage = "name is marked @NonNull but is null";
 
@@ -309,7 +327,6 @@ public class BookServiceImplTest {
     }
 
     @Test
-    @Transactional
     public void shouldGetByAuthorBooksCorrectly() {
         bookService.addAll(books);
 
@@ -331,7 +348,6 @@ public class BookServiceImplTest {
     }
 
     @Test
-    @Transactional
     public void shouldThrowNullPointerExceptionWhenGetByNullAuthor() {
         val exceptionMessage = "author is marked @NonNull but is null";
 
@@ -341,7 +357,6 @@ public class BookServiceImplTest {
     }
 
     @Test
-    @Transactional
     public void shouldGetByPrintYearBooksCorrectly() {
         bookService.addAll(books);
 
@@ -363,7 +378,6 @@ public class BookServiceImplTest {
     }
 
     @Test
-    @Transactional
     public void shouldGetByReadBooksCorrectly() {
         bookService.addAll(books);
 
@@ -385,7 +399,6 @@ public class BookServiceImplTest {
     }
 
     @Test
-    @Transactional
     public void shouldGetAllBooksCorrectly() {
         bookService.addAll(books);
 
@@ -408,7 +421,6 @@ public class BookServiceImplTest {
     }
 
     @Test
-    @Transactional
     public void shouldUpdateBookCorrectly() {
         bookService.add(firstBook);
 
@@ -431,7 +443,6 @@ public class BookServiceImplTest {
     }
 
     @Test
-    @Transactional
     public void shouldThrowNullPointerExceptionWhenUpdateNullBook() {
         val exceptionMessage = "book is marked @NonNull but is null";
 
@@ -441,7 +452,21 @@ public class BookServiceImplTest {
     }
 
     @Test
-    @Transactional
+    public void shouldThrowDataIntegrityViolationExceptionWhenUpdateIncorrectEntity() {
+        val exceptionMessage = "not-null property references a null or transient value : " +
+                "com.qthegamep.bookmanager3.entity.Book.name; nested exception is " +
+                "org.hibernate.PropertyValueException: not-null property references a null or transient value : " +
+                "com.qthegamep.bookmanager3.entity.Book.name";
+
+        firstBook.setName(null);
+
+        assertThatExceptionOfType(DataIntegrityViolationException.class)
+                .isThrownBy(() -> bookService.update(firstBook))
+                .withMessage(exceptionMessage)
+                .withCauseExactlyInstanceOf(PropertyValueException.class);
+    }
+
+    @Test
     public void shouldUpdateAllBooksCorrectly() {
         bookService.addAll(books);
 
@@ -466,7 +491,6 @@ public class BookServiceImplTest {
     }
 
     @Test
-    @Transactional
     public void shouldThrowNullPointerExceptionWhenUpdateAllNullListOfBooks() {
         val exceptionMessage = "books is marked @NonNull but is null";
 
@@ -476,7 +500,21 @@ public class BookServiceImplTest {
     }
 
     @Test
-    @Transactional
+    public void shouldThrowDataIntegrityViolationExceptionWhenUpdateAllListWithIncorrectEntity() {
+        val exceptionMessage = "not-null property references a null or transient value : " +
+                "com.qthegamep.bookmanager3.entity.Book.name; nested exception is " +
+                "org.hibernate.PropertyValueException: not-null property references a null or transient value : " +
+                "com.qthegamep.bookmanager3.entity.Book.name";
+
+        books.get(0).setName(null);
+
+        assertThatExceptionOfType(DataIntegrityViolationException.class)
+                .isThrownBy(() -> bookService.updateAll(books))
+                .withMessage(exceptionMessage)
+                .withCauseExactlyInstanceOf(PropertyValueException.class);
+    }
+
+    @Test
     public void shouldRemoveBookCorrectly() {
         bookService.add(firstBook);
 
@@ -499,7 +537,6 @@ public class BookServiceImplTest {
     }
 
     @Test
-    @Transactional
     public void shouldThrowNullPointerExceptionWhenRemoveNullBook() {
         val exceptionMessage = "book is marked @NonNull but is null";
 
@@ -509,7 +546,21 @@ public class BookServiceImplTest {
     }
 
     @Test
-    @Transactional
+    public void shouldThrowDataIntegrityViolationExceptionWhenRemoveIncorrectEntity() {
+        val exceptionMessage = "not-null property references a null or transient value : " +
+                "com.qthegamep.bookmanager3.entity.Book.name; nested exception is " +
+                "org.hibernate.PropertyValueException: not-null property references a null or transient value : " +
+                "com.qthegamep.bookmanager3.entity.Book.name";
+
+        firstBook.setName(null);
+
+        assertThatExceptionOfType(DataIntegrityViolationException.class)
+                .isThrownBy(() -> bookService.remove(firstBook))
+                .withMessage(exceptionMessage)
+                .withCauseExactlyInstanceOf(PropertyValueException.class);
+    }
+
+    @Test
     public void shouldRemoveAllListOfBooksBooksCorrectly() {
         bookService.addAll(books);
 
@@ -532,7 +583,6 @@ public class BookServiceImplTest {
     }
 
     @Test
-    @Transactional
     public void shouldThrowNullPointerExceptionWhenRemoveAllNullListOfBooks() {
         val exceptionMessage = "books is marked @NonNull but is null";
 
@@ -542,7 +592,21 @@ public class BookServiceImplTest {
     }
 
     @Test
-    @Transactional
+    public void shouldThrowDataIntegrityViolationExceptionWhenRemoveAllListWithIncorrectEntity() {
+        val exceptionMessage = "not-null property references a null or transient value : " +
+                "com.qthegamep.bookmanager3.entity.Book.name; nested exception is " +
+                "org.hibernate.PropertyValueException: not-null property references a null or transient value : " +
+                "com.qthegamep.bookmanager3.entity.Book.name";
+
+        books.get(0).setName(null);
+
+        assertThatExceptionOfType(DataIntegrityViolationException.class)
+                .isThrownBy(() -> bookService.removeAll(books))
+                .withMessage(exceptionMessage)
+                .withCauseExactlyInstanceOf(PropertyValueException.class);
+    }
+
+    @Test
     public void shouldRemoveAllBooksCorrectly() {
         bookService.addAll(books);
 
