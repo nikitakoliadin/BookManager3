@@ -3,6 +3,8 @@ package com.qthegamep.bookmanager3.service;
 import com.qthegamep.bookmanager3.entity.Book;
 import com.qthegamep.bookmanager3.exception.EntityAlreadyExistsException;
 
+import org.springframework.dao.DataIntegrityViolationException;
+
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
@@ -15,23 +17,29 @@ public interface BookService {
      * This service method should add book entity to the database.
      * If book entity is already exists in the database then would be thrown
      * {@link com.qthegamep.bookmanager3.exception.EntityAlreadyExistsException}.
+     * If book entity is incorrect then would be thrown
+     * {@link org.springframework.dao.DataIntegrityViolationException}.
      *
      * @param book is the entity that will be added to the database.
      * @return book entity.
-     * @throws EntityAlreadyExistsException when trying to add book entity when this entity already exists.
+     * @throws EntityAlreadyExistsException    when trying to add book entity and this entity already exists.
+     * @throws DataIntegrityViolationException when trying to add book entity and this entity is incorrect.
      */
-    Book add(Book book) throws EntityAlreadyExistsException;
+    Book add(Book book) throws EntityAlreadyExistsException, DataIntegrityViolationException;
 
     /**
      * This service method should add list of book entities to the database.
      * If book entity is already exists in the database then would be thrown
      * {@link com.qthegamep.bookmanager3.exception.EntityAlreadyExistsException}.
+     * If book entity is incorrect then would be thrown
+     * {@link org.springframework.dao.DataIntegrityViolationException}.
      *
      * @param books is the list of entities that will be added to the database.
      * @return list of book entities.
-     * @throws EntityAlreadyExistsException when trying to add book entity when this entity already exists.
+     * @throws EntityAlreadyExistsException    when trying to add book entity and this entity already exists.
+     * @throws DataIntegrityViolationException when trying to add book entity and this entity is incorrect.
      */
-    List<Book> addAll(List<Book> books) throws EntityAlreadyExistsException;
+    List<Book> addAll(List<Book> books) throws EntityAlreadyExistsException, DataIntegrityViolationException;
 
     /**
      * This service method should return book entity from the database by id.
@@ -40,7 +48,7 @@ public interface BookService {
      *
      * @param id is the parameter by which the entity will be returned.
      * @return book entity.
-     * @throws EntityNotFoundException when trying to get entity by id when this entity does not exists.
+     * @throws EntityNotFoundException when trying to get entity by id and this entity does not exists.
      */
     Book getById(Long id) throws EntityNotFoundException;
 
@@ -85,33 +93,45 @@ public interface BookService {
 
     /**
      * This service method should update book entity in the database.
+     * If book entity is incorrect then would be thrown
+     * {@link org.springframework.dao.DataIntegrityViolationException}.
      *
      * @param book is the entity that will be updated in the database.
      * @return book entity.
+     * @throws DataIntegrityViolationException when trying to update book entity and this entity is incorrect.
      */
-    Book update(Book book);
+    Book update(Book book) throws DataIntegrityViolationException;
 
     /**
      * This service method should update list of book entities in the database.
+     * If book entity is incorrect then would be thrown
+     * {@link org.springframework.dao.DataIntegrityViolationException}.
      *
      * @param books is the list of entities that will be updated in the database.
      * @return list of book entities.
+     * @throws DataIntegrityViolationException when trying to update book entity and this entity is incorrect.
      */
-    List<Book> updateAll(List<Book> books);
+    List<Book> updateAll(List<Book> books) throws DataIntegrityViolationException;
 
     /**
      * This service method should delete book entity from the database.
+     * If book entity is incorrect then would be thrown
+     * {@link org.springframework.dao.DataIntegrityViolationException}.
      *
      * @param book is the entity that will be deleted from the database.
+     * @throws DataIntegrityViolationException when trying to remove book entity and this entity is incorrect.
      */
-    void remove(Book book);
+    void remove(Book book) throws DataIntegrityViolationException;
 
     /**
      * This service method should delete list of book entities from the database.
+     * If book entity is incorrect then would be thrown
+     * {@link org.springframework.dao.DataIntegrityViolationException}.
      *
      * @param books is the list of entities that will be deleted from the database.
+     * @throws DataIntegrityViolationException when trying to remove book entity and this entity is incorrect.
      */
-    void removeAll(List<? extends Book> books);
+    void removeAll(List<? extends Book> books) throws DataIntegrityViolationException;
 
     /**
      * This service method should delete all book entities from the database.
