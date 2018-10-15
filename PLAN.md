@@ -71,6 +71,7 @@
             * [resources](src/test/resources)
                 * [db](src/test/resources/db)
                     * [initDB.sql](src/test/resources/db/initDB.sql)
+                    * [populateDB.sql](src/test/resources/db/populateDB.sql)
                 * [logback-test.xml](src/test/resources/logback-test.xml)
                 * [spy.properties](src/test/resources/spy.properties)
                 * [testApplicationContext.xml](src/test/resources/testApplicationContext.xml)
