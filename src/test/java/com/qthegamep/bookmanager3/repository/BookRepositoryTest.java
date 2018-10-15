@@ -31,6 +31,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
+@Transactional
 @WebAppConfiguration
 @ContextConfiguration("classpath:testApplicationContext.xml")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
@@ -60,7 +61,7 @@ public class BookRepositoryTest {
     }
 
     @Test
-    public void shouldBeNotNullBookRepository() {
+    public void shouldAutowiredBookRepository() {
         assertThat(bookRepository).isNotNull();
     }
 
@@ -70,7 +71,6 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
     public void shouldBeEmptyDatabaseBeforeEachTest() {
         val allBooksFromTheDatabase = bookRepository.findAll();
 
@@ -80,8 +80,7 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
-    public void shouldAddEntityToTheDatabaseCorrectly() {
+    public void shouldSaveEntityToTheDatabaseCorrectly() {
         bookRepository.save(firstBook);
 
         var allBooksFromTheDatabase = bookRepository.findAll();
@@ -102,8 +101,7 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
-    public void shouldThrowInvalidDataAccessApiUsageExceptionWhenAddNullEntity() {
+    public void shouldThrowInvalidDataAccessApiUsageExceptionWhenSaveNullEntity() {
         val exceptionMessage = "Target object must not be null; nested exception is " +
                 "java.lang.IllegalArgumentException: Target object must not be null";
 
@@ -119,8 +117,7 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
-    public void shouldThrowDataIntegrityViolationExceptionWhenAddIncorrectEntity() {
+    public void shouldThrowDataIntegrityViolationExceptionWhenSaveIncorrectEntity() {
         val exceptionMessage = "not-null property references a null or transient value : " +
                 "com.qthegamep.bookmanager3.entity.Book.name; nested exception is " +
                 "org.hibernate.PropertyValueException: not-null property references a null or transient value : " +
@@ -140,8 +137,7 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
-    public void shouldAddAllEntitiesToTheDatabaseCorrectly() {
+    public void shouldSaveAllEntitiesToTheDatabaseCorrectly() {
         bookRepository.saveAll(books);
 
         var allBooksFromTheDatabase = bookRepository.findAll();
@@ -153,8 +149,7 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
-    public void shouldThrowInvalidDataAccessApiUsageExceptionWhenAddNullListOfEntities() {
+    public void shouldThrowInvalidDataAccessApiUsageExceptionWhenSaveAllNullListOfEntities() {
         val exceptionMessage = "The given Iterable of entities not be null!; nested exception is " +
                 "java.lang.IllegalArgumentException: The given Iterable of entities not be null!";
 
@@ -162,12 +157,10 @@ public class BookRepositoryTest {
                 .isThrownBy(() -> bookRepository.saveAll(null))
                 .withMessage(exceptionMessage)
                 .withCauseExactlyInstanceOf(IllegalArgumentException.class);
-
     }
 
     @Test
-    @Transactional
-    public void shouldThrowInvalidDataAccessApiUsageExceptionWhenAddListWithNullEntity() {
+    public void shouldThrowInvalidDataAccessApiUsageExceptionWhenSaveAllListWithNullEntity() {
         val exceptionMessage = "Target object must not be null; nested exception is " +
                 "java.lang.IllegalArgumentException: Target object must not be null";
 
@@ -180,8 +173,7 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
-    public void shouldThrowDataIntegrityViolationExceptionWhenAddListWithIncorrectEntity() {
+    public void shouldThrowDataIntegrityViolationExceptionWhenSaveAllListWithIncorrectEntity() {
         val exceptionMessage = "not-null property references a null or transient value : " +
                 "com.qthegamep.bookmanager3.entity.Book.name; nested exception is " +
                 "org.hibernate.PropertyValueException: not-null property references a null or transient value : " +
@@ -196,8 +188,7 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
-    public void shouldGetByIdEntityFromTheDatabaseCorrectly() {
+    public void shouldGetOneEntityFromTheDatabaseCorrectly() {
         bookRepository.save(firstBook);
 
         val book = bookRepository.getOne(1L);
@@ -208,8 +199,7 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
-    public void shouldThrowEntityNotFoundExceptionWhenGetByIdNotExistEntity() {
+    public void shouldThrowEntityNotFoundExceptionWhenGetOneNotExistEntity() {
         val exceptionMessage = "Unable to find com.qthegamep.bookmanager3.entity.Book with id 2";
 
         bookRepository.save(firstBook);
@@ -222,8 +212,18 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
-    public void shouldGetByNameEntitiesFromTheDatabaseCorrectly() {
+    public void shouldThrowInvalidDataAccessApiUsageExceptionWhenGetOneNullEntity() {
+        val exceptionMessage = "The given id must not be null!; nested exception is " +
+                "java.lang.IllegalArgumentException: The given id must not be null!";
+
+        assertThatExceptionOfType(InvalidDataAccessApiUsageException.class)
+                .isThrownBy(() -> bookRepository.getOne(null))
+                .withMessage(exceptionMessage)
+                .withCauseExactlyInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    public void shouldFindBooksByNameFromTheDatabaseCorrectly() {
         bookRepository.saveAll(books);
 
         val booksFromTheDatabase = bookRepository.findBooksByName("test firstBook");
@@ -235,8 +235,7 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
-    public void shouldGetByNameReturnEmptyEntitiesListCorrectly() {
+    public void shouldFindBooksByNameReturnEmptyListCorrectly() {
         val booksFromTheDatabase = bookRepository.findBooksByName("nothing");
 
         assertThat(booksFromTheDatabase)
@@ -245,8 +244,7 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
-    public void shouldGetByAuthorEntitiesFromTheDatabaseCorrectly() {
+    public void shouldFindBooksByAuthorFromTheDatabaseCorrectly() {
         bookRepository.saveAll(books);
 
         val booksFromTheDatabase = bookRepository.findBooksByAuthor("test firstAuthor");
@@ -258,8 +256,7 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
-    public void shouldGetByAuthorReturnEmptyEntitiesListCorrectly() {
+    public void shouldFindBooksByAuthorReturnEmptyListCorrectly() {
         val booksFromTheDatabase = bookRepository.findBooksByAuthor("nothing");
 
         assertThat(booksFromTheDatabase)
@@ -268,8 +265,7 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
-    public void shouldGetByPrintYearEntitiesFromTheDatabaseCorrectly() {
+    public void shouldFindBooksByPrintYearFromTheDatabaseCorrectly() {
         bookRepository.saveAll(books);
 
         val booksFromTheDatabase = bookRepository.findBooksByPrintYear(2000);
@@ -281,8 +277,7 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
-    public void shouldGetByPrintYearReturnEmptyEntitiesListCorrectly() {
+    public void shouldFindBooksByPrintYearReturnEmptyListCorrectly() {
         val booksFromTheDatabase = bookRepository.findBooksByPrintYear(0);
 
         assertThat(booksFromTheDatabase)
@@ -291,8 +286,7 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
-    public void shouldGetByIsReadEntitiesFromTheDatabaseCorrectly() {
+    public void shouldFindBooksByReadFromTheDatabaseCorrectly() {
         bookRepository.saveAll(books);
 
         val booksFromTheDatabase = bookRepository.findBooksByRead(false);
@@ -304,8 +298,7 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
-    public void shouldGetByIsReadReturnEmptyEntitiesListCorrectly() {
+    public void shouldFindBooksByReadReturnEmptyListCorrectly() {
         val booksFromTheDatabase = bookRepository.findBooksByRead(true);
 
         assertThat(booksFromTheDatabase)
@@ -314,8 +307,7 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
-    public void shouldGetAllEntitiesFromTheDatabaseCorrectly() {
+    public void shouldFindAllEntitiesFromTheDatabaseCorrectly() {
         bookRepository.saveAll(books);
 
         val allBooksFromTheDatabase = bookRepository.findAll();
@@ -327,8 +319,7 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
-    public void shouldGetAllReturnEmptyEntitiesListCorrectly() {
+    public void shouldFindAllEntitiesReturnEmptyListCorrectly() {
         val allBooksFromTheDatabase = bookRepository.findAll();
 
         assertThat(allBooksFromTheDatabase)
@@ -337,7 +328,6 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
     public void shouldUpdateEntityInTheDatabaseCorrectly() {
         bookRepository.saveAll(books);
 
@@ -365,7 +355,6 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
     public void shouldUpdateAllEntitiesInTheDatabaseCorrectly() {
         bookRepository.saveAll(books);
 
@@ -383,8 +372,7 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
-    public void shouldDeleteEntityFromTheDatabaseCorrectly() {
+    public void shouldDeleteBookFromTheDatabaseCorrectly() {
         bookRepository.saveAll(books);
 
         bookRepository.delete(firstBook);
@@ -406,8 +394,7 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
-    public void shouldNotDeleteEntityFromTheDatabaseWhenDatabaseIsEmpty() {
+    public void shouldNotDeleteBookFromTheDatabaseWhenDatabaseIsEmpty() {
         bookRepository.delete(firstBook);
 
         val allBooksFromTheDatabase = bookRepository.findAll();
@@ -418,7 +405,6 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
     public void shouldThrowInvalidDataAccessApiUsageExceptionWhenDeleteNullEntity() {
         val exceptionMessage = "The entity must not be null!; nested exception is " +
                 "java.lang.IllegalArgumentException: The entity must not be null!";
@@ -430,7 +416,6 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
     public void shouldThrowDataIntegrityViolationExceptionWhenDeleteIncorrectEntity() {
         val exceptionMessage = "not-null property references a null or transient value : " +
                 "com.qthegamep.bookmanager3.entity.Book.name; nested exception is " +
@@ -446,8 +431,7 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
-    public void shouldThrowEmptyResultDataAccessExceptionWhenDeleteNotExistEntity() {
+    public void shouldThrowEmptyResultDataAccessExceptionWhenDeleteByIdNotExistEntity() {
         val exceptionMessage = "No class com.qthegamep.bookmanager3.entity.Book entity with id 1 exists!";
 
         assertThatExceptionOfType(EmptyResultDataAccessException.class)
@@ -456,7 +440,6 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
     public void shouldDeleteAllEntitiesFromTheDatabaseCorrectly() {
         bookRepository.saveAll(books);
 
@@ -480,19 +463,6 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
-    public void shouldNotDeleteAllEntitiesFromTheDatabaseWhenDatabaseIsEmpty() {
-        bookRepository.deleteAll();
-
-        val allBooksFromTheDatabase = bookRepository.findAll();
-
-        assertThat(allBooksFromTheDatabase)
-                .isNotNull()
-                .isEmpty();
-    }
-
-    @Test
-    @Transactional
     public void shouldNotDeleteListOfAllEntitiesFromTheDatabaseWhenDatabaseIsEmpty() {
         bookRepository.deleteAll(books);
 
@@ -504,7 +474,17 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
+    public void shouldNotDeleteAllEntitiesFromTheDatabaseWhenDatabaseIsEmpty() {
+        bookRepository.deleteAll();
+
+        val allBooksFromTheDatabase = bookRepository.findAll();
+
+        assertThat(allBooksFromTheDatabase)
+                .isNotNull()
+                .isEmpty();
+    }
+
+    @Test
     public void shouldThrowInvalidDataAccessApiUsageExceptionWhenDeleteNullListOfEntities() {
         val exceptionMessage = "The given Iterable of entities not be null!; nested exception is " +
                 "java.lang.IllegalArgumentException: The given Iterable of entities not be null!";
@@ -516,7 +496,6 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
     public void shouldThrowInvalidDataAccessApiUsageExceptionWhenDeleteListWithNullEntity() {
         val exceptionMessage = "The entity must not be null!; nested exception is " +
                 "java.lang.IllegalArgumentException: The entity must not be null!";
@@ -530,7 +509,6 @@ public class BookRepositoryTest {
     }
 
     @Test
-    @Transactional
     public void shouldThrowDataIntegrityViolationExceptionWhenDeleteListWithIncorrectEntity() {
         val exceptionMessage = "not-null property references a null or transient value : " +
                 "com.qthegamep.bookmanager3.entity.Book.name; nested exception is " +
