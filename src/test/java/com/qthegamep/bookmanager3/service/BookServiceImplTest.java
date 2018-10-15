@@ -29,6 +29,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -266,12 +267,11 @@ public class BookServiceImplTest {
 
     @Test
     public void shouldCallGetByIdMethodCorrectly() {
-        when(bookRepositoryMock.existsById(1L)).thenReturn(true);
+        when(bookRepositoryMock.findById(1L)).thenReturn(Optional.of(firstBook));
 
         bookServiceMock.getById(1L);
 
-        verify(bookRepositoryMock, times(1)).existsById(1L);
-        verify(bookRepositoryMock, times(1)).getOne(1L);
+        verify(bookRepositoryMock, times(1)).findById(1L);
 
         verifyNoMoreInteractions(bookRepositoryMock);
     }
