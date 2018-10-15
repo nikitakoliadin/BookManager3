@@ -95,6 +95,12 @@ public class BookServiceImpl implements BookService {
     public Book getById(@NonNull Long id) throws EntityNotFoundException {
         log.info("Preparing to get book entity by id: {}", id);
 
+        if (!bookRepository.existsById(id)) {
+            log.info("Unable to find com.qthegamep.bookmanager3.entity.Book with id {}", id);
+
+            throw new EntityNotFoundException("Unable to find com.qthegamep.bookmanager3.entity.Book with id " + id);
+        }
+
         val book = bookRepository.getOne(id);
 
         log.info("Entity: {} was gotten from the database", book);
