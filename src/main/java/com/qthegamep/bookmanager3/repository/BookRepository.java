@@ -16,34 +16,34 @@ import java.util.List;
 public interface BookRepository extends JpaRepository<Book, Long> {
 
     /**
-     * This repository method should return list of books entities objects from the database by name.
+     * This repository method should return list of book entities from the database by name.
      *
-     * @param name is the parameter by which the list of entities objects will be returned.
-     * @return list of books entities objects.
+     * @param name is the parameter by which the list of entities will be returned.
+     * @return list of book entities.
      */
     List<Book> findBooksByName(String name);
 
     /**
-     * This repository method should return list of books entities objects from the database by author.
+     * This repository method should return list of book entities from the database by author.
      *
-     * @param author is the parameter by which the list of entities objects will be returned.
-     * @return list of books entities objects.
+     * @param author is the parameter by which the list of entities will be returned.
+     * @return list of book entities.
      */
     List<Book> findBooksByAuthor(String author);
 
     /**
-     * This repository method should return list of books entities objects from the database by print year.
+     * This repository method should return list of book entities from the database by print year.
      *
-     * @param printYear is the parameter by which the list of entities objects will be returned.
-     * @return list of books entities objects.
+     * @param printYear is the parameter by which the list of entities will be returned.
+     * @return list of book entities.
      */
     List<Book> findBooksByPrintYear(int printYear);
 
     /**
-     * This repository method should return list of books entities objects from the database by read.
+     * This repository method should return list of book entities from the database by read.
      *
-     * @param read is the parameter by which the list of entities objects will be returned.
-     * @return list of books entities objects.
+     * @param read is the parameter by which the list of entities will be returned.
+     * @return list of book entities.
      */
     List<Book> findBooksByRead(boolean read);
 }

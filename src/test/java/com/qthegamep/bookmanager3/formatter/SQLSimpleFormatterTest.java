@@ -30,7 +30,7 @@ public class SQLSimpleFormatterTest {
     }
 
     @Test
-    public void shouldCreateObjectWithNoArgsConstructor() {
+    public void shouldCreateSQLSimpleFormatterWithNoArgsConstructor() {
         assertThat(sqlSimpleFormatter).isNotNull();
     }
 

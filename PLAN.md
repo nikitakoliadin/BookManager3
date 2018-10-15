@@ -69,6 +69,9 @@
                                     * [TestDataUtil.java](src/test/java/com/qthegamep/bookmanager3/testhelper/util/TestDataUtil.java)
                             * [ApplicationTest.java](src/test/java/com/qthegamep/bookmanager3/ApplicationTest.java)
             * [resources](src/test/resources)
+                * [db](src/test/resources/db)
+                    * [initDB.sql](src/test/resources/db/initDB.sql)
+                    * [populateDB.sql](src/test/resources/db/populateDB.sql)
                 * [logback-test.xml](src/test/resources/logback-test.xml)
                 * [spy.properties](src/test/resources/spy.properties)
                 * [testApplicationContext.xml](src/test/resources/testApplicationContext.xml)
@@ -81,6 +84,6 @@
     * [README.md](README.md)
 
 ## Bugs && Messages
-* AppConfig class
-    * dataSource() -> setDriverClassName() mutation
-    * transactionManager() -> setEntityManagerFactory() mutation
+* [AppConfig.java](src/main/java/com/qthegamep/bookmanager3/config/AppConfig.java) -> 2 mutation is not killed:
+    * public DataSource dataSource() {} -> dataSource.setDriverClassName(env.getRequiredProperty(DB_DRIVER_CLASS_NAME));
+    * public JpaTransactionManager transactionManager() {} -> transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());

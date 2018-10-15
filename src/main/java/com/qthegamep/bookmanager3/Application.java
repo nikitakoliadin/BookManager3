@@ -10,6 +10,11 @@ import lombok.extern.slf4j.Slf4j;
 @UtilityClass
 public class Application {
 
+    /**
+     * This is main method that start this application.
+     *
+     * @param args is command line arguments.
+     */
     public static void main(String[] args) {
         log.info(System.lineSeparator() +
                 "------------------------------------------------------------------------------------------------" +

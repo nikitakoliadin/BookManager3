@@ -40,7 +40,7 @@ public class AppConfigTest {
     private AppConfig appConfig;
 
     @Test
-    public void shouldBeNotNullAppConfig() {
+    public void shouldAutowiredAppConfig() {
         assertThat(appConfig).isNotNull();
     }
 
