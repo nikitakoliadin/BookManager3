@@ -25,6 +25,7 @@ import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -243,8 +244,11 @@ public class BookServiceImplTest {
 
     @Test
     public void shouldCallGetByIdMethodCorrectly() {
+        when(bookRepositoryMock.existsById(1L)).thenReturn(true);
+
         bookServiceMock.getById(1L);
 
+        verify(bookRepositoryMock, times(1)).existsById(1L);
         verify(bookRepositoryMock, times(1)).getOne(1L);
 
         verifyNoMoreInteractions(bookRepositoryMock);
@@ -257,6 +261,18 @@ public class BookServiceImplTest {
 
         assertThatNullPointerException()
                 .isThrownBy(() -> bookService.getById(null))
+                .withMessage(exceptionMessage);
+    }
+
+    @Test
+    @Transactional
+    public void shouldThrowEntityNotFoundExceptionWhenGetByIdNotExistEntity() {
+        val exceptionMessage = "Unable to find com.qthegamep.bookmanager3.entity.Book with id 2";
+
+        bookService.add(firstBook);
+
+        assertThatExceptionOfType(EntityNotFoundException.class)
+                .isThrownBy(() -> bookService.getById(2L))
                 .withMessage(exceptionMessage);
     }
 
