@@ -30,7 +30,7 @@ public class AppInitializerTest {
     }
 
     @Test
-    public void shouldCreateObjectWithNoArgsConstructor() {
+    public void shouldCreateAppInitializerWithNoArgsConstructor() {
         assertThat(appInitializer).isNotNull();
     }
 
