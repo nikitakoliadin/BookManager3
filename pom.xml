@@ -101,7 +101,7 @@
         <p6spy.version>3.7.0</p6spy.version>
 
         <!-- Spring -->
-        <spring.version>5.1.0.RELEASE</spring.version>
+        <spring.version>5.1.1.RELEASE</spring.version>
         <spring-data-jpa.version>2.1.0.RELEASE</spring-data-jpa.version>
 
         <!-- Javax Servlet API -->
