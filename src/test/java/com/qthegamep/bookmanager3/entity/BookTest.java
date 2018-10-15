@@ -34,8 +34,9 @@ public class BookTest {
     }
 
     @Test
-    public void shouldCreateObjectWithNoArgsConstructor() {
+    public void shouldCreateBookWithNoArgsConstructor() {
         assertThat(firstBook).isNotNull();
+        assertThat(firstBookCopy).isNotNull();
     }
 
     @Test
