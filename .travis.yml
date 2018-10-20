@@ -8,12 +8,12 @@ cache:
 
 # Customizing the build - https://docs.travis-ci.com/user/customizing-the-build/
 install:
-- if [ "$DESC" = "test - oraclejdk10 - H2" ] || [ "$DESC" = "test - openjdk10 - H2" ];
+- if [ "$DESC" = "test - openjdk11 - H2" ] || [ "$DESC" = "test - openjdk10 - H2" ];
   then mvn install -P h2-database -D skipTests=true -D maven.javadoc.skip=true -B -V;
   fi
 
 script:
-- if [ "$DESC" = "test - oraclejdk10 - H2" ] || [ "$DESC" = "test - openjdk10 - H2" ];
+- if [ "$DESC" = "test - openjdk11 - H2" ] || [ "$DESC" = "test - openjdk10 - H2" ];
   then mvn test -P h2-database -B;
   fi
 
@@ -21,8 +21,8 @@ script:
 matrix:
   fast_finish: true
   include:
-  - jdk: oraclejdk10
-    env: DESC="test - oraclejdk10 - H2"
+  - jdk: openjdk11
+    env: DESC="test - openjdk11 - H2"
   - jdk: openjdk10
     env: DESC="test - openjdk10 - H2"
 
