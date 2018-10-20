@@ -28,6 +28,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -521,5 +522,29 @@ public class BookRepositoryTest {
                 .isThrownBy(() -> bookRepository.deleteAll(books))
                 .withMessage(exceptionMessage)
                 .withCauseExactlyInstanceOf(PropertyValueException.class);
+    }
+
+    @Test
+    public void shouldHashSetContainsTheSameEntityAfterGettingId() {
+        val firstBookCopy = TestDataUtil.createFirstBook();
+
+        firstBook.setId(null);
+        firstBookCopy.setId(null);
+
+        val books = Set.of(firstBook);
+
+        assertThat(books)
+                .isNotNull()
+                .isNotEmpty()
+                .hasSize(1)
+                .contains(firstBook);
+
+        bookRepository.save(firstBook);
+
+        assertThat(books)
+                .isNotNull()
+                .isNotEmpty()
+                .hasSize(1)
+                .contains(firstBookCopy);
     }
 }

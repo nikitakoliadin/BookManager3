@@ -20,12 +20,12 @@ public class SQLSimpleFormatter implements MessageFormattingStrategy {
      *
      * @param elapsed  is lead time.
      * @param category is category of sql operation.
-     * @param sql      is query that has not been formatted yes.
+     * @param sql      is query that has not been formatted yet.
      * @return a formatted request.
      */
     @Override
     public String formatMessage(int connectionId, String now, long elapsed,
-                                String category, String prepared, String sql) {
+                                String category, String prepared, String sql, String url) {
         log.info("Preparing to formatting sql query: {}", sql);
 
         if (sql.isEmpty()) {

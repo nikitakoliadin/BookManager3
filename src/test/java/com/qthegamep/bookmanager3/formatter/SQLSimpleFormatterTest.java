@@ -51,7 +51,8 @@ public class SQLSimpleFormatterTest {
                 elapsed,
                 "",
                 "",
-                sqlQuery
+                sqlQuery,
+                ""
         );
 
         val expectedFormattedQuery = "P6Spy - Hibernate:  " + System.lineSeparator() +
@@ -79,7 +80,8 @@ public class SQLSimpleFormatterTest {
                 elapsed,
                 category,
                 "",
-                sqlQuery
+                sqlQuery,
+                ""
         );
 
         val expectedFormattedQuery = "P6Spy - Hibernate:  add to batch  " + System.lineSeparator() +
@@ -100,6 +102,7 @@ public class SQLSimpleFormatterTest {
                 0,
                 "",
                 0,
+                "",
                 "",
                 "",
                 ""

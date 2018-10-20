@@ -95,14 +95,14 @@
         <jaxb-runtime.version>2.4.0-b180830.0438</jaxb-runtime.version>
 
         <!-- Hibernate -->
-        <hibernate.version>5.3.6.Final</hibernate.version>
+        <hibernate.version>5.3.7.Final</hibernate.version>
 
         <!-- P6Spy -->
-        <p6spy.version>3.7.0</p6spy.version>
+        <p6spy.version>3.8.0</p6spy.version>
 
         <!-- Spring -->
         <spring.version>5.1.1.RELEASE</spring.version>
-        <spring-data-jpa.version>2.1.0.RELEASE</spring-data-jpa.version>
+        <spring-data-jpa.version>2.1.1.RELEASE</spring-data-jpa.version>
 
         <!-- Javax Servlet API -->
         <javax-servlet-api.version>4.0.1</javax-servlet-api.version>
