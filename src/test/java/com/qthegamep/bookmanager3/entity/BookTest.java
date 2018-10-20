@@ -90,9 +90,39 @@ public class BookTest {
     }
 
     @Test
+    public void shouldBeEqualsOfCopyObject() {
+        firstBookCopy = firstBook;
+
+        assertThat(firstBook).isEqualTo(firstBookCopy);
+    }
+
+    @Test
+    public void shouldBeNotEqualsToNullObject() {
+        firstBookCopy = null;
+
+        assertThat(firstBook).isNotEqualTo(firstBookCopy);
+    }
+
+    @Test
+    public void shouldBeEqualsWithDifferentId() {
+        firstBook.setId(1L);
+        firstBookCopy.setId(2L);
+
+        assertThat(firstBook).isEqualTo(firstBookCopy);
+    }
+
+    @Test
     public void shouldBeEqualsWithNullId() {
         firstBook.setId(null);
         firstBookCopy.setId(null);
+
+        assertThat(firstBook).isEqualTo(firstBookCopy);
+    }
+
+    @Test
+    public void shouldBeEqualsIfIdOfFirstObjectIsNull() {
+        firstBook.setId(null);
+        firstBookCopy.setId(1L);
 
         assertThat(firstBook).isEqualTo(firstBookCopy);
     }
@@ -103,35 +133,6 @@ public class BookTest {
         firstBookCopy.setName(null);
 
         assertThat(firstBook).isEqualTo(firstBookCopy);
-    }
-
-    @Test
-    public void shouldBeEqualsWithNullAuthor() {
-        firstBook.setAuthor(null);
-        firstBookCopy.setAuthor(null);
-
-        assertThat(firstBook).isEqualTo(firstBookCopy);
-    }
-
-    @Test
-    public void shouldBeEqualsOfCopyObject() {
-        firstBookCopy = firstBook;
-
-        assertThat(firstBook).isEqualTo(firstBookCopy);
-    }
-
-    @Test
-    public void shouldBeNotEqualsIfIdIsNotEquals() {
-        firstBookCopy.setId(2L);
-
-        assertThat(firstBook).isNotEqualTo(firstBookCopy);
-    }
-
-    @Test
-    public void shouldBeNotEqualsIfIdOfFirstObjectIsNull() {
-        firstBook.setId(null);
-
-        assertThat(firstBook).isNotEqualTo(firstBookCopy);
     }
 
     @Test
@@ -146,6 +147,14 @@ public class BookTest {
         firstBookCopy.setName("firstBookCopy");
 
         assertThat(firstBook).isNotEqualTo(firstBookCopy);
+    }
+
+    @Test
+    public void shouldBeEqualsWithNullAuthor() {
+        firstBook.setAuthor(null);
+        firstBookCopy.setAuthor(null);
+
+        assertThat(firstBook).isEqualTo(firstBookCopy);
     }
 
     @Test
@@ -172,13 +181,6 @@ public class BookTest {
     @Test
     public void shouldBeNotEqualsIfIsReadIsNotEquals() {
         firstBookCopy.setRead(true);
-
-        assertThat(firstBook).isNotEqualTo(firstBookCopy);
-    }
-
-    @Test
-    public void shouldBeNotEqualsToNullObject() {
-        firstBookCopy = null;
 
         assertThat(firstBook).isNotEqualTo(firstBookCopy);
     }
@@ -222,8 +224,6 @@ public class BookTest {
         val actual = firstBook.hashCode();
 
         var expected = 1;
-        val id = firstBook.getId();
-        expected = expected * 59 + (id == null ? 43 : id.hashCode());
         val name = firstBook.getName();
         expected = expected * 59 + (name == null ? 43 : name.hashCode());
         val author = firstBook.getAuthor();
@@ -235,17 +235,19 @@ public class BookTest {
     }
 
     @Test
-    public void shouldBeNotEqualsHashCodeIfIdIsNotEquals() {
+    public void shouldBeEqualsHashCodeIfIdIsNotEquals() {
+        firstBook.setId(1L);
         firstBookCopy.setId(2L);
 
-        assertThat(firstBook.hashCode()).isNotEqualTo(firstBookCopy.hashCode());
+        assertThat(firstBook.hashCode()).isEqualTo(firstBookCopy.hashCode());
     }
 
     @Test
-    public void shouldBeNotEqualsHashCodeIfIdOfFirstObjectIsNull() {
+    public void shouldBeEqualsHashCodeIfIdOfFirstObjectIsNull() {
         firstBook.setId(null);
+        firstBookCopy.setId(1L);
 
-        assertThat(firstBook.hashCode()).isNotEqualTo(firstBookCopy.hashCode());
+        assertThat(firstBook.hashCode()).isEqualTo(firstBookCopy.hashCode());
     }
 
     @Test
