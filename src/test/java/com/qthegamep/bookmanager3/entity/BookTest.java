@@ -105,7 +105,6 @@ public class BookTest {
 
     @Test
     public void shouldBeEqualsWithDifferentId() {
-        firstBook.setId(1L);
         firstBookCopy.setId(2L);
 
         assertThat(firstBook).isEqualTo(firstBookCopy);
@@ -122,7 +121,6 @@ public class BookTest {
     @Test
     public void shouldBeEqualsIfIdOfFirstObjectIsNull() {
         firstBook.setId(null);
-        firstBookCopy.setId(1L);
 
         assertThat(firstBook).isEqualTo(firstBookCopy);
     }
@@ -208,18 +206,6 @@ public class BookTest {
     }
 
     @Test
-    public void shouldBeEqualsHashCode() {
-        assertThat(firstBook.hashCode()).isEqualTo(firstBookCopy.hashCode());
-    }
-
-    @Test
-    public void shouldBeEqualsHashCodeOfCopyObject() {
-        firstBookCopy = firstBook;
-
-        assertThat(firstBook.hashCode()).isEqualTo(firstBookCopy.hashCode());
-    }
-
-    @Test
     public void shouldWorkHashCodeCorrectly() {
         val actual = firstBook.hashCode();
 
@@ -235,8 +221,19 @@ public class BookTest {
     }
 
     @Test
+    public void shouldBeEqualsHashCode() {
+        assertThat(firstBook.hashCode()).isEqualTo(firstBookCopy.hashCode());
+    }
+
+    @Test
+    public void shouldBeEqualsHashCodeOfCopyObject() {
+        firstBookCopy = firstBook;
+
+        assertThat(firstBook.hashCode()).isEqualTo(firstBookCopy.hashCode());
+    }
+
+    @Test
     public void shouldBeEqualsHashCodeIfIdIsNotEquals() {
-        firstBook.setId(1L);
         firstBookCopy.setId(2L);
 
         assertThat(firstBook.hashCode()).isEqualTo(firstBookCopy.hashCode());
@@ -245,7 +242,14 @@ public class BookTest {
     @Test
     public void shouldBeEqualsHashCodeIfIdOfFirstObjectIsNull() {
         firstBook.setId(null);
-        firstBookCopy.setId(1L);
+
+        assertThat(firstBook.hashCode()).isEqualTo(firstBookCopy.hashCode());
+    }
+
+    @Test
+    public void shouldBeEqualsHashCodeWithNullId() {
+        firstBook.setId(null);
+        firstBookCopy.setId(null);
 
         assertThat(firstBook.hashCode()).isEqualTo(firstBookCopy.hashCode());
     }
