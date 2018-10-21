@@ -65,6 +65,7 @@
 
         <!-- Versions plugin -->
         <versions-plugin.version>2.5</versions-plugin.version>
+        <versions-plugin.rulesUri>file://${user.dir}/src/main/resources/version/rules.xml</versions-plugin.rulesUri>
         <versions-plugin.generateBackupPoms>false</versions-plugin.generateBackupPoms>
 
         <!-- JetBrains -->
@@ -272,6 +273,7 @@
                 <artifactId>versions-maven-plugin</artifactId>
                 <version>${versions-plugin.version}</version>
                 <configuration>
+                    <rulesUri>${versions-plugin.rulesUri}</rulesUri>
                     <generateBackupPoms>${versions-plugin.generateBackupPoms}</generateBackupPoms>
                 </configuration>
             </plugin>
