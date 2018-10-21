@@ -12,7 +12,7 @@
     <url>http://maven.apache.org</url>
 
     <prerequisites>
-        <maven>3.0</maven>
+        <maven>3.3.9</maven>
     </prerequisites>
 
     <properties>
@@ -55,16 +55,16 @@
         <deploy-plugin.version>3.0.0-M1</deploy-plugin.version>
 
         <!-- JaCoCo plugin -->
-        <jacoco-plugin.version>0.8.1</jacoco-plugin.version>
+        <jacoco-plugin.version>0.8.2</jacoco-plugin.version>
 
         <!-- Pitest plugin -->
-        <pitest-plugin.version>1.4.0</pitest-plugin.version>
+        <pitest-plugin.version>1.4.3</pitest-plugin.version>
         <pitest-plugin.verbose>false</pitest-plugin.verbose>
         <pitest-plugin.threads>2</pitest-plugin.threads>
         <pitest-plugin.timeoutConstant>300000</pitest-plugin.timeoutConstant>
 
         <!-- Versions plugin -->
-        <versions-plugin.version>2.5</versions-plugin.version>
+        <versions-plugin.version>2.7</versions-plugin.version>
         <versions-plugin.rulesUri>file://${user.dir}/src/main/resources/version/rules.xml</versions-plugin.rulesUri>
         <versions-plugin.generateBackupPoms>false</versions-plugin.generateBackupPoms>
 
