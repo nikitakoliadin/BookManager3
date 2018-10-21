@@ -48,16 +48,25 @@ If you want to use this project:
 5. If you want to package a jar file, then open the "*Lifecycle*" of the Maven and choose "*package*";
 
 ## Implementation Information
-* **Programming Language:** Java
-* **Build System:** [Maven](https://maven.apache.org/)
-* **Control System:** [Git](https://git-scm.com/)
-* **License:** [Apache license, version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
+* **Programming Language:**
+    * [Java](https://en.wikipedia.org/wiki/Java_(programming_language))
+* **Build System:**
+    * [Maven](https://maven.apache.org/)
+* **Control System:**
+    * [Git](https://git-scm.com/)
+* **License:**
+    * [Apache license, version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
 * **Continuous Integration:**
     * [Travis CI](https://travis-ci.org/)
     * [AppVeyor CI](https://ci.appveyor.com)
-* **Code Coverage:** [Codecov.io](https://codecov.io/)
-* **Code Style:** [Codacy](https://www.codacy.com/)
-* **Chat:** [Gitter](https://gitter.im/)
+* **Code Coverage:**
+    * [Codecov.io](https://codecov.io/)
+* **Code Style:**
+    * [Codacy](https://www.codacy.com/)
+* **Chat:**
+    * [Gitter](https://gitter.im/)
+* **AOP:**
+    * [AspectJ](https://www.baeldung.com/aspectj)
 * **Annotations:**
     * [JetBrains Annotations](https://blog.jetbrains.com/dotnet/2018/05/03/what-are-jetbrains-annotations/)
     * [Lombok](https://projectlombok.org/)
@@ -65,7 +74,10 @@ If you want to use this project:
     * [JUnit4](https://junit.org/junit4/)
     * [AssertJ](http://joel-costigliola.github.io/assertj/)
     * [Mockito](http://site.mockito.org/)
-* **Mutation Testing:** [Pitest](http://pitest.org/)
+* **Test Report:**
+    * [Allure](http://allure.qatools.ru/)
+* **Mutation Testing:**
+    * [Pitest](http://pitest.org/)
 * **Log:**
     * [SLF4J](https://www.slf4j.org/)
     * [Logback](https://logback.qos.ch/)
@@ -95,6 +107,7 @@ If you want to use this project:
 	* [JUnit4](https://mvnrepository.com/artifact/junit/junit)
 	* [AssertJ](https://mvnrepository.com/artifact/org.assertj/assertj-core)
     * [Mockito](https://mvnrepository.com/artifact/org.mockito/mockito-core)
+    * [Allure](https://mvnrepository.com/artifact/io.qameta.allure/allure-junit4)
     * [SLF4J API](https://mvnrepository.com/artifact/org.slf4j/slf4j-api)
     * [JCL Over SLF4J](https://mvnrepository.com/artifact/org.slf4j/jcl-over-slf4j)
     * [JUL to SLF4J](https://mvnrepository.com/artifact/org.slf4j/jul-to-slf4j)
@@ -126,6 +139,7 @@ If you want to use this project:
     * [Apache Maven Deploy Plugin](http://maven.apache.org/plugins/maven-deploy-plugin/)
     * [JaCoCo Plugin](http://www.baeldung.com/jacoco)
     * [Pitest Plugin](http://pitest.org/quickstart/maven/)
+    * [Allure Plugin](https://docs.qameta.io/allure/#_maven_6)
     * [Versions Maven Plugin](http://www.mojohaus.org/versions-maven-plugin/)
 
 ## Contact Information
