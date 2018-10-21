@@ -42,6 +42,8 @@
                         * [spy.properties](src/main/resources/db/postgresql/spy.properties)
                 * [META-INF](src/main/resources/META-INF)
                     * [persistence.xml](src/main/resources/META-INF/persistence.xml)
+                * [version](src/main/resources/version)
+                    * [rules.xml](src/main/resources/version/rules.xml)
                 * [logback.xml](src/main/resources/logback.xml)
         * [test](src/test)
             * [java](src/test/java)
@@ -84,6 +86,6 @@
     * [README.md](README.md)
 
 ## Bugs && Messages
-* [AppConfig.java](src/main/java/com/qthegamep/bookmanager3/config/AppConfig.java) -> 2 mutation is not killed:
+* [AppConfig.java](src/main/java/com/qthegamep/bookmanager3/config/AppConfig.java) -> 2 mutations are not killed:
     * public DataSource dataSource() {} -> dataSource.setDriverClassName(env.getRequiredProperty(DB_DRIVER_CLASS_NAME));
     * public JpaTransactionManager transactionManager() {} -> transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
