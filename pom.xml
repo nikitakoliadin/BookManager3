@@ -32,6 +32,10 @@
 
         <!-- Surefire plugin -->
         <surefire-plugin.version>2.22.0</surefire-plugin.version>
+        <surefire-plugin.testFailureIgnore>false</surefire-plugin.testFailureIgnore>
+        <surefire-plugin.argLine>
+            -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+        </surefire-plugin.argLine>
 
         <!-- Assembly plugin -->
         <assembly-plugin.version>3.1.0</assembly-plugin.version>
@@ -63,10 +67,17 @@
         <pitest-plugin.threads>2</pitest-plugin.threads>
         <pitest-plugin.timeoutConstant>300000</pitest-plugin.timeoutConstant>
 
+        <!-- Allure plugin -->
+        <allure-plugin.version>2.9</allure-plugin.version>
+        <allure-plugin.reportVersion>2.7.0</allure-plugin.reportVersion>
+
         <!-- Versions plugin -->
         <versions-plugin.version>2.7</versions-plugin.version>
         <versions-plugin.rulesUri>file://${user.dir}/src/main/resources/version/rules.xml</versions-plugin.rulesUri>
         <versions-plugin.generateBackupPoms>false</versions-plugin.generateBackupPoms>
+
+        <!-- AspectJ -->
+        <aspectj.version>1.9.1</aspectj.version>
 
         <!-- JetBrains -->
         <jetbrains-annotations.version>16.0.3</jetbrains-annotations.version>
@@ -82,6 +93,9 @@
 
         <!-- Mockito -->
         <mockito.version>2.23.0</mockito.version>
+
+        <!-- Allure -->
+        <allure.version>2.7.0</allure.version>
 
         <!-- SLF4J -->
         <slf4j.version>1.7.25</slf4j.version>
@@ -160,6 +174,29 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${surefire-plugin.version}</version>
+                <configuration>
+                    <testFailureIgnore>${surefire-plugin.testFailureIgnore}</testFailureIgnore>
+                    <argLine>${surefire-plugin.argLine}</argLine>
+                    <properties>
+                        <property>
+                            <name>listener</name>
+                            <value>io.qameta.allure.junit4.AllureJunit4</value>
+                        </property>
+                    </properties>
+                    <systemProperties>
+                        <property>
+                            <name>allure.results.directory</name>
+                            <value>${project.build.directory}/allure-results</value>
+                        </property>
+                    </systemProperties>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
 
             <!-- Assembly plugin -->
@@ -267,6 +304,16 @@
                 </executions>
             </plugin>
 
+            <!-- Allure plugin -->
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure-plugin.version}</version>
+                <configuration>
+                    <reportVersion>${allure-plugin.reportVersion}</reportVersion>
+                </configuration>
+            </plugin>
+
             <!-- Versions plugin -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -320,6 +367,14 @@
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-junit4 -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit4</artifactId>
+            <version>${allure.version}</version>
             <scope>test</scope>
         </dependency>
 
