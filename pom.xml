@@ -129,7 +129,7 @@
         <h2-jdbc.version>1.4.197</h2-jdbc.version>
 
         <!-- MySQL JDBC -->
-        <mysql-jdbc.version>8.0.12</mysql-jdbc.version>
+        <mysql-jdbc.version>8.0.13</mysql-jdbc.version>
 
         <!-- PostgreSQL JDBC -->
         <postgresql-jdbc.version>42.2.5</postgresql-jdbc.version>
@@ -176,7 +176,7 @@
                 <version>${surefire-plugin.version}</version>
                 <configuration>
                     <testFailureIgnore>${surefire-plugin.testFailureIgnore}</testFailureIgnore>
-                    <argLine>${surefire-plugin.argLine}</argLine>
+                    <argLine>@{argLine} ${surefire-plugin.argLine}</argLine>
                     <properties>
                         <property>
                             <name>listener</name>
@@ -269,6 +269,8 @@
                 <version>${jacoco-plugin.version}</version>
                 <executions>
                     <execution>
+                        <id>prepare-agent</id>
+                        <phase>initialize</phase>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
@@ -370,6 +372,7 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Report -->
         <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-junit4 -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
