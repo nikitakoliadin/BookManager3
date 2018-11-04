@@ -83,7 +83,7 @@
         <jetbrains-annotations.version>16.0.3</jetbrains-annotations.version>
 
         <!-- Lombok -->
-        <lombok.version>1.18.2</lombok.version>
+        <lombok.version>1.18.4</lombok.version>
 
         <!-- JUnit -->
         <junit.version>4.12</junit.version>
@@ -116,8 +116,8 @@
         <p6spy.version>3.8.0</p6spy.version>
 
         <!-- Spring -->
-        <spring.version>5.1.1.RELEASE</spring.version>
-        <spring-data-jpa.version>2.1.1.RELEASE</spring-data-jpa.version>
+        <spring.version>5.1.2.RELEASE</spring.version>
+        <spring-data-jpa.version>2.1.2.RELEASE</spring-data-jpa.version>
 
         <!-- Javax Servlet API -->
         <javax-servlet-api.version>4.0.1</javax-servlet-api.version>
