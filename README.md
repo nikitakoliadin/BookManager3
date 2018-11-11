@@ -3,8 +3,10 @@
 ## Project Information
 This project is the manager of books. I used such kinds of databases as:
 * Main databases:
-    * [PostgreSQL](https://www.postgresql.org/)
+    * [H2](http://www.h2database.com/html/main.html)
     * [MySql](https://dev.mysql.com/)
+    * [Oracle](https://www.oracle.com/database/)
+    * [PostgreSQL](https://www.postgresql.org/)
 * Test database:
     * [H2](http://www.h2database.com/html/main.html)
 
@@ -25,6 +27,9 @@ SQL scripts:
 * [MySQL](src/main/resources/db/mysql)
     * [Initialization script](src/main/resources/db/mysql/initDB.sql)
     * [Populate script](src/main/resources/db/mysql/populateDB.sql)
+* [Oracle](src/main/resources/db/oracle)
+    * [Initialization script](src/main/resources/db/oracle/initDB.sql)
+    * [Populate script](src/main/resources/db/oracle/populateDB.sql)
 * [PostgreSQL](src/main/resources/db/postgresql)
     * [Initialization script](src/main/resources/db/postgresql/initDB.sql)
     * [Populate script](src/main/resources/db/postgresql/populateDB.sql)
@@ -98,6 +103,7 @@ If you want to use this project:
 * **Database:**
     * [H2](http://www.h2database.com/html/main.html)
     * [MySQL](https://dev.mysql.com/)
+    * [Oracle](https://www.oracle.com/database/)
     * [PostgreSQL](https://www.postgresql.org/)
 
 ## Resources Information
@@ -124,6 +130,7 @@ If you want to use this project:
     * [Javax Annotation API](https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api)
     * [H2 JDBC](https://mvnrepository.com/artifact/com.h2database/h2)
     * [MySQL JDBC](https://mvnrepository.com/artifact/mysql/mysql-connector-java)
+    * [Oracle JDBC](https://mvnrepository.com/artifact/com.oracle/ojdbc7)
     * [PostgreSQL JDBC](https://mvnrepository.com/artifact/org.postgresql/postgresql)
 * **Plugins:**
     * [Specifying Resource Directories](https://maven.apache.org/plugins/maven-resources-plugin/examples/resource-directory.html)
@@ -141,6 +148,8 @@ If you want to use this project:
     * [Pitest Plugin](http://pitest.org/quickstart/maven/)
     * [Allure Plugin](https://docs.qameta.io/allure/#_maven_6)
     * [Versions Maven Plugin](http://www.mojohaus.org/versions-maven-plugin/)
+* **Maven Repositories:**
+    * [HandChina RDC Repository](https://mvnrepository.com/repos/hand-china-rdc)
 
 ## Contact Information
 * **Author:** Koliadin Nikita
