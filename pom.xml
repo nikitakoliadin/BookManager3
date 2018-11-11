@@ -83,7 +83,7 @@
         <jetbrains-annotations.version>16.0.3</jetbrains-annotations.version>
 
         <!-- Lombok -->
-        <lombok.version>1.18.2</lombok.version>
+        <lombok.version>1.18.4</lombok.version>
 
         <!-- JUnit -->
         <junit.version>4.12</junit.version>
@@ -116,8 +116,8 @@
         <p6spy.version>3.8.0</p6spy.version>
 
         <!-- Spring -->
-        <spring.version>5.1.1.RELEASE</spring.version>
-        <spring-data-jpa.version>2.1.1.RELEASE</spring-data-jpa.version>
+        <spring.version>5.1.2.RELEASE</spring.version>
+        <spring-data-jpa.version>2.1.2.RELEASE</spring-data-jpa.version>
 
         <!-- Javax Servlet API -->
         <javax-servlet-api.version>4.0.1</javax-servlet-api.version>
@@ -130,6 +130,9 @@
 
         <!-- MySQL JDBC -->
         <mysql-jdbc.version>8.0.13</mysql-jdbc.version>
+
+        <!-- Oracle JDBC -->
+        <oracle-jdbc.version>12.1.0.2</oracle-jdbc.version>
 
         <!-- PostgreSQL JDBC -->
         <postgresql-jdbc.version>42.2.5</postgresql-jdbc.version>
@@ -548,6 +551,38 @@
                     <groupId>mysql</groupId>
                     <artifactId>mysql-connector-java</artifactId>
                     <version>${mysql-jdbc.version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
+
+        <!-- Oracle database profile -->
+        <profile>
+            <id>oracle-database</id>
+
+            <repositories>
+                <!-- https://mvnrepository.com/repos/hand-china-rdc -->
+                <repository>
+                    <id>hand-china-rdc-repository</id>
+                    <name>HandChina RDC Repository</name>
+                    <url>http://nexus.saas.hand-china.com/content/repositories/rdc/</url>
+                </repository>
+            </repositories>
+
+            <build>
+                <!-- Oracle resources directory -->
+                <resources>
+                    <resource>
+                        <directory>src/main/resources/db/oracle</directory>
+                    </resource>
+                </resources>
+            </build>
+
+            <dependencies>
+                <!-- https://mvnrepository.com/artifact/com.oracle/ojdbc7 -->
+                <dependency>
+                    <groupId>com.oracle</groupId>
+                    <artifactId>ojdbc7</artifactId>
+                    <version>${oracle-jdbc.version}</version>
                 </dependency>
             </dependencies>
         </profile>
