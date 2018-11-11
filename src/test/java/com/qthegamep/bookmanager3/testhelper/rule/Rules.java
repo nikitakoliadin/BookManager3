@@ -33,7 +33,10 @@ public class Rules {
                     TimeUnit.NANOSECONDS.toMillis(nanos)
             );
 
-            className = description.getClassName();
+            if (!description.getClassName().equals(className)) {
+                className = description.getClassName();
+            }
+
             RESULTS.append(result).append(System.lineSeparator());
             log.info(result);
         }
