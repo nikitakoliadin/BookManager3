@@ -154,5 +154,6 @@ If you want to use this project:
 ## Contact Information
 * **Author:** Koliadin Nikita
 * **Facebook:** [My Facebook](https://www.facebook.com/koliadin.nikita)
+* **LinkedIn:** [My LinkedIn](https://www.linkedin.com/in/nikita-koliadin-b24361174/)
 * **Gmail:** qThegamEp@gmail.com
 * **JavaRush:** [My JavaRush](https://javarush.ru/users/1324097)
