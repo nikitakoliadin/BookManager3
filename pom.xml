@@ -95,7 +95,7 @@
         <mockito.version>2.23.0</mockito.version>
 
         <!-- Allure -->
-        <allure.version>2.7.0</allure.version>
+        <allure.version>2.8.1</allure.version>
 
         <!-- SLF4J -->
         <slf4j.version>1.7.25</slf4j.version>
