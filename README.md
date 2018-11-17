@@ -38,6 +38,7 @@ SQL scripts:
 | Technology     | Badge |
 |:--------------:|:-----:|
 | License        | [![LICENSE](https://img.shields.io/badge/LICENSE-Apache%202.0-blue.svg)](LICENSE) |
+| Jenkins        | [![Jenkins](https://img.shields.io/badge/Jenkins-Local-blue.svg)](http://192.168.0.104:8080/) |
 | Travis CI      | [![Build Status](https://travis-ci.org/qThegamEp/BookManager3.svg?branch=master)](https://travis-ci.org/qThegamEp/BookManager3) |
 | AppVeyor CI    | [![Build status](https://ci.appveyor.com/api/projects/status/95k7375fc9bddrbt/branch/master?svg=true)](https://ci.appveyor.com/project/qThegamEp/bookmanager3/branch/master) |
 | Codecov        | [![codecov](https://codecov.io/gh/qThegamEp/BookManager3/branch/master/graph/badge.svg)](https://codecov.io/gh/qThegamEp/BookManager3) |
@@ -62,6 +63,7 @@ If you want to use this project:
 * **License:**
     * [Apache license, version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
 * **Continuous Integration:**
+    * [Jenkins CI](https://jenkins.io)
     * [Travis CI](https://travis-ci.org/)
     * [AppVeyor CI](https://ci.appveyor.com)
 * **Code Coverage:**
