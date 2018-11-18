@@ -66,6 +66,7 @@
         <pitest-plugin.verbose>false</pitest-plugin.verbose>
         <pitest-plugin.threads>2</pitest-plugin.threads>
         <pitest-plugin.timeoutConstant>300000</pitest-plugin.timeoutConstant>
+        <pitest-plugin.skip>true</pitest-plugin.skip>
 
         <!-- Allure plugin -->
         <allure-plugin.version>2.9</allure-plugin.version>
@@ -297,6 +298,7 @@
                     <verbose>${pitest-plugin.verbose}</verbose>
                     <threads>${pitest-plugin.threads}</threads>
                     <timeoutConstant>${pitest-plugin.timeoutConstant}</timeoutConstant>
+                    <skip>${pitest-plugin.skip}</skip>
                 </configuration>
                 <executions>
                     <execution>
@@ -509,6 +511,15 @@
     </dependencyManagement>
 
     <profiles>
+        <!-- Activate pitest profile -->
+        <profile>
+            <id>activate-pitest</id>
+
+            <properties>
+                <pitest-plugin.skip>false</pitest-plugin.skip>
+            </properties>
+        </profile>
+
         <!-- H2 database profile -->
         <profile>
             <id>h2-database</id>
