@@ -9,7 +9,17 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <url>http://maven.apache.org</url>
+    <url>https://github.com/qThegamEp/BookManager3</url>
+
+    <developers>
+        <developer>
+            <id>qThegamEp</id>
+            <name>Nikita Koliadin</name>
+            <email>qThegamEp@gmail.com</email>
+            <url>https://github.com/qThegamEp/</url>
+            <timezone>Ukraine/Dnipro</timezone>
+        </developer>
+    </developers>
 
     <prerequisites>
         <maven>3.3.9</maven>
