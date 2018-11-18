@@ -8,13 +8,16 @@ cache:
 
 # Customizing the build - https://docs.travis-ci.com/user/customizing-the-build/
 install:
-- if [ "$DESC" = "test - openjdk10 - H2" ];
+- if [ "$DESC" = "openjdk10 - H2" ] || [ "$DESC" = "openjdk10 - Pitest - H2" ];
   then mvn install -P h2-database -D skipTests=true -D maven.javadoc.skip=true -B -V;
   fi
 
 script:
-- if [ "$DESC" = "test - openjdk10 - H2" ];
+- if [ "$DESC" = "openjdk10 - H2" ];
   then mvn test -P h2-database -B;
+  fi
+- if [ "$DESC" = "openjdk10 - Pitest - H2" ];
+  then mvn test -P activate-pitest -P h2-database -B;
   fi
 
 # Matrix expansion - https://docs.travis-ci.com/user/build-stages/matrix-expansion/
@@ -22,7 +25,9 @@ matrix:
   fast_finish: true
   include:
   - jdk: openjdk10
-    env: DESC="test - openjdk10 - H2"
+    env: DESC="openjdk10 - H2"
+  - jdk: openjdk10
+    env: DESC="openjdk10 - Pitest - H2"
 
 # Codecov - https://github.com/codecov/example-java
 after_success:

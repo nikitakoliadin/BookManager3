@@ -8,5 +8,6 @@
         <ignoreVersion type="regex">.*[Aa]lpha.*</ignoreVersion>
         <ignoreVersion type="regex">.*(?i)[Bb]eta.*</ignoreVersion>
         <ignoreVersion type="regex">.*jre.*</ignoreVersion>
+        <ignoreVersion type="regex">.*CR.*</ignoreVersion>
     </ignoreVersions>
 </ruleset>
