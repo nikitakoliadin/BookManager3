@@ -90,63 +90,45 @@
         <!-- AspectJ -->
         <aspectj.version>1.9.1</aspectj.version>
 
-        <!-- JetBrains -->
-        <jetbrains-annotations.version>16.0.3</jetbrains-annotations.version>
+        <!-- Annotations -->
+        <annotations.jetbrains-annotations.version>16.0.3</annotations.jetbrains-annotations.version>
+        <annotations.lombok.version>1.18.4</annotations.lombok.version>
 
-        <!-- Lombok -->
-        <lombok.version>1.18.4</lombok.version>
+        <!-- Test -->
+        <test.junit.version>4.12</test.junit.version>
+        <test.assertj.version>3.11.1</test.assertj.version>
+        <test.mockito.version>2.23.0</test.mockito.version>
 
-        <!-- JUnit -->
-        <junit.version>4.12</junit.version>
+        <!-- Report -->
+        <report.allure.version>2.8.1</report.allure.version>
 
-        <!-- AssertJ -->
-        <assertj.version>3.11.1</assertj.version>
+        <!-- Log -->
+        <log.slf4j.version>1.7.25</log.slf4j.version>
+        <log.logback.version>1.2.3</log.logback.version>
 
-        <!-- Mockito -->
-        <mockito.version>2.23.0</mockito.version>
+        <!-- Parser -->
+        <parser.jaxb-api.version>2.4.0-b180830.0359</parser.jaxb-api.version>
+        <parser.jaxb-runtime.version>2.4.0-b180830.0438</parser.jaxb-runtime.version>
 
-        <!-- Allure -->
-        <allure.version>2.8.1</allure.version>
+        <!-- ORM -->
+        <orm.hibernate.version>5.3.7.Final</orm.hibernate.version>
 
-        <!-- SLF4J -->
-        <slf4j.version>1.7.25</slf4j.version>
-
-        <!-- Logback -->
-        <logback.version>1.2.3</logback.version>
-
-        <!-- JAXB - API -->
-        <jaxb-api.version>2.4.0-b180830.0359</jaxb-api.version>
-
-        <!-- JAXB - runtime -->
-        <jaxb-runtime.version>2.4.0-b180830.0438</jaxb-runtime.version>
-
-        <!-- Hibernate -->
-        <hibernate.version>5.3.7.Final</hibernate.version>
-
-        <!-- P6Spy -->
-        <p6spy.version>3.8.0</p6spy.version>
+        <!-- Proxy -->
+        <proxy.p6spy.version>3.8.0</proxy.p6spy.version>
 
         <!-- Spring -->
-        <spring.version>5.1.2.RELEASE</spring.version>
-        <spring-data-jpa.version>2.1.2.RELEASE</spring-data-jpa.version>
+        <spring.spring-framework-bom.version>5.1.2.RELEASE</spring.spring-framework-bom.version>
+        <spring.spring-data-jpa.version>2.1.2.RELEASE</spring.spring-data-jpa.version>
 
-        <!-- Javax Servlet API -->
-        <javax-servlet-api.version>4.0.1</javax-servlet-api.version>
+        <!-- Javax -->
+        <javax.javax-servlet-api.version>4.0.1</javax.javax-servlet-api.version>
+        <javax.javax-annotation-api.version>1.3.2</javax.javax-annotation-api.version>
 
-        <!-- Javax Annotation API -->
-        <javax-annotation-api.version>1.3.2</javax-annotation-api.version>
-
-        <!-- H2 JDBC -->
-        <h2-jdbc.version>1.4.197</h2-jdbc.version>
-
-        <!-- MySQL JDBC -->
-        <mysql-jdbc.version>8.0.13</mysql-jdbc.version>
-
-        <!-- Oracle JDBC -->
-        <oracle-jdbc.version>12.1.0.2</oracle-jdbc.version>
-
-        <!-- PostgreSQL JDBC -->
-        <postgresql-jdbc.version>42.2.5</postgresql-jdbc.version>
+        <!-- DB -->
+        <db.h2-jdbc.version>1.4.197</db.h2-jdbc.version>
+        <db.mysql-jdbc.version>8.0.13</db.mysql-jdbc.version>
+        <db.oracle-jdbc.version>12.1.0.2</db.oracle-jdbc.version>
+        <db.postgresql-jdbc.version>42.2.5</db.postgresql-jdbc.version>
     </properties>
 
     <build>
@@ -350,7 +332,7 @@
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
-            <version>${jetbrains-annotations.version}</version>
+            <version>${annotations.jetbrains-annotations.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -358,7 +340,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
+            <version>${annotations.lombok.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -367,7 +349,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
+            <version>${test.junit.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -375,7 +357,7 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
+            <version>${test.assertj.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -383,7 +365,7 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>${mockito.version}</version>
+            <version>${test.mockito.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -392,7 +374,7 @@
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-junit4</artifactId>
-            <version>${allure.version}</version>
+            <version>${report.allure.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -401,7 +383,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
+            <version>${log.slf4j.version}</version>
             <scope>compile</scope>
         </dependency>
 
@@ -409,7 +391,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
-            <version>${slf4j.version}</version>
+            <version>${log.slf4j.version}</version>
             <scope>runtime</scope>
         </dependency>
 
@@ -417,7 +399,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jul-to-slf4j</artifactId>
-            <version>${slf4j.version}</version>
+            <version>${log.slf4j.version}</version>
             <scope>runtime</scope>
         </dependency>
 
@@ -425,7 +407,7 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
+            <version>${log.logback.version}</version>
             <scope>runtime</scope>
         </dependency>
 
@@ -434,14 +416,14 @@
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
-            <version>${jaxb-api.version}</version>
+            <version>${parser.jaxb-api.version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-runtime -->
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
-            <version>${jaxb-runtime.version}</version>
+            <version>${parser.jaxb-runtime.version}</version>
         </dependency>
 
         <!-- ORM -->
@@ -449,7 +431,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.version}</version>
+            <version>${orm.hibernate.version}</version>
         </dependency>
 
         <!-- Proxy -->
@@ -457,7 +439,7 @@
         <dependency>
             <groupId>p6spy</groupId>
             <artifactId>p6spy</artifactId>
-            <version>${p6spy.version}</version>
+            <version>${proxy.p6spy.version}</version>
         </dependency>
 
         <!-- Spring -->
@@ -465,7 +447,7 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
-            <version>${spring-data-jpa.version}</version>
+            <version>${spring.spring-data-jpa.version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
@@ -486,7 +468,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${javax-servlet-api.version}</version>
+            <version>${javax.javax-servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -494,7 +476,7 @@
         <dependency>
             <groupId>javax.annotation</groupId>
             <artifactId>javax.annotation-api</artifactId>
-            <version>${javax-annotation-api.version}</version>
+            <version>${javax.javax-annotation-api.version}</version>
         </dependency>
 
         <!-- DB -->
@@ -502,7 +484,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>${h2-jdbc.version}</version>
+            <version>${db.h2-jdbc.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -513,7 +495,7 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-framework-bom</artifactId>
-                <version>${spring.version}</version>
+                <version>${spring.spring-framework-bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -548,7 +530,7 @@
                 <dependency>
                     <groupId>com.h2database</groupId>
                     <artifactId>h2</artifactId>
-                    <version>${h2-jdbc.version}</version>
+                    <version>${db.h2-jdbc.version}</version>
                 </dependency>
             </dependencies>
         </profile>
@@ -571,7 +553,7 @@
                 <dependency>
                     <groupId>mysql</groupId>
                     <artifactId>mysql-connector-java</artifactId>
-                    <version>${mysql-jdbc.version}</version>
+                    <version>${db.mysql-jdbc.version}</version>
                 </dependency>
             </dependencies>
         </profile>
@@ -603,7 +585,7 @@
                 <dependency>
                     <groupId>com.oracle</groupId>
                     <artifactId>ojdbc7</artifactId>
-                    <version>${oracle-jdbc.version}</version>
+                    <version>${db.oracle-jdbc.version}</version>
                 </dependency>
             </dependencies>
         </profile>
@@ -626,7 +608,7 @@
                 <dependency>
                     <groupId>org.postgresql</groupId>
                     <artifactId>postgresql</artifactId>
-                    <version>${postgresql-jdbc.version}</version>
+                    <version>${db.postgresql-jdbc.version}</version>
                 </dependency>
             </dependencies>
         </profile>
