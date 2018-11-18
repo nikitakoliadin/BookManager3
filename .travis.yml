@@ -25,7 +25,7 @@ matrix:
   fast_finish: true
   include:
   - jdk: openjdk10
-    end: DESC="openjdk10 - H2"
+    env: DESC="openjdk10 - H2"
   - jdk: openjdk10
     env: DESC="openjdk10 - Pitest - H2"
 
