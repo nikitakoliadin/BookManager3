@@ -11,15 +11,6 @@ install:
 - if [ "$DESC" = "openjdk10 - H2" ] || [ "$DESC" = "openjdk10 - Pitest - H2" ];
   then mvn install -P h2-database -D skipTests=true -D maven.javadoc.skip=true -B -V;
   fi
-- if [ "$DESC" = "openjdk10 - MySQL" ] || [ "$DESC" = "openjdk10 - Pitest - MySQL" ];
-  then mvn install -P mysql-database -D skipTests=true -D maven.javadoc.skip=true -B -V;
-  fi
-- if [ "$DESC" = "openjdk10 - Oracle" ] || [ "$DESC" = "openjdk10 - Pitest - Oracle" ];
-  then mvn install -P oracle-database -D skipTests=true -D maven.javadoc.skip=true -B -V;
-  fi
-- if [ "$DESC" = "openjdk10 - PostgreSQL" ] || [ "$DESC" = "openjdk10 - Pitest - PostgreSQL" ];
-  then mvn install -P postgresql-database -D skipTests=true -D maven.javadoc.skip=true -B -V;
-  fi
 
 script:
 - if [ "$DESC" = "openjdk10 - H2" ];
@@ -27,24 +18,6 @@ script:
   fi
 - if [ "$DESC" = "openjdk10 - Pitest - H2" ];
   then mvn test -P activate-pitest -P h2-database -B;
-  fi
-- if [ "$DESC" = "openjdk10 - MySQL" ];
-  then mvn test -P mysql-database -B;
-  fi
-- if [ "$DESC" = "openjdk10 - Pitest - MySQL" ];
-  then mvn test -P activate-pitest -P mysql-database -B;
-  fi
-- if [ "$DESC" = "openjdk10 - Oracle" ];
-  then mvn test -P oracle-database -B;
-  fi
-- if [ "$DESC" = "openjdk10 - Pitest - Oracle" ];
-  then mvn test -P activate-pitest -P oracle-database -B;
-  fi
-- if [ "$DESC" = "openjdk10 - PostgreSQL" ];
-  then mvn test -P postgresql-database -B;
-  fi
-- if [ "$DESC" = "openjdk10 - Pitest - PostgreSQL" ];
-  then mvn test -P activate-pitest -P postgresql-database -B;
   fi
 
 # Matrix expansion - https://docs.travis-ci.com/user/build-stages/matrix-expansion/
@@ -55,18 +28,6 @@ matrix:
     end: DESC="openjdk10 - H2"
   - jdk: openjdk10
     env: DESC="openjdk10 - Pitest - H2"
-  - jdk: openjdk10
-    env: DESC="openjdk10 - MySQL"
-  - jdk: openjdk10
-    env: DESC="openjdk10 - Pitest - MySQL"
-  - jdk: openjdk10
-    env: DESC="openjdk10 - Oracle"
-  - jdk: openjdk10
-    env: DESC="openjdk10 - Pitest - Oracle"
-  - jdk: openjdk10
-    env: DESC="openjdk10 - PostgreSQL"
-  - jdk: openjdk10
-    env: DESC="openjdk10 - Pitest - PostgreSQL"
 
 # Codecov - https://github.com/codecov/example-java
 after_success:
