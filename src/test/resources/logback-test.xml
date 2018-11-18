@@ -132,8 +132,7 @@
     </root>
 
     <!-- Test results logger -->
-    <logger name="TEST_RESULT_LOGGER" additivity="false">
-        <level value="INFO"/>
+    <logger name="TEST_RESULT_LOGGER" level="INFO" additivity="false">
         <appender-ref ref="TEST_RESULTS_FILE_LOG"/>
         <appender-ref ref="TEST_RESULTS_CONSOLE_LOG"/>
         <appender-ref ref="ALL_FILE_LOG"/>
