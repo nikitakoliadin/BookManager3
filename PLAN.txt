@@ -1,0 +1,42 @@
+BookManager3
+
+- Set CI
+	Allure
+		behaviors
+		categories
+		log
+		Add to Jenkins
+	Jenkins
+		Add Pitest
+		Add Allure
+
+Refactoring
+	BookTest
+		shouldBeNotEqualsHashCdeToNullObject - delete if we can
+	EntityAlreadyExistsException
+		9 строка последнее слово
+
+JUnit5
+	pom.xml
+	Migrate
+	разпаралелить тесты (surefire plugin)
+	Параметризированные тесты
+	README.md
+	resume
+
+- Java 11
+	idea
+	maven
+	travis
+	appveyor
+
+- Create class like builder or factory, maybe use dynamicProxy to create in runtime this:
+		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        BookServiceImpl bean = context.getBean(BookServiceImpl.class);
+        Book book = new Book();
+        book.setName("a");
+        book.setAuthor("aa");
+        book.setPrintYear(1001);
+        book.setRead(true);
+        bean.add(book);
+        System.out.println(bean.getAll());
